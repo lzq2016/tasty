@@ -1,0 +1,9 @@
+{
+  "client": "./src",
+  "setting": {
+    "postcss": true,
+    "es6": true,
+    "minified": false,
+    "urlCheck": false
+  }
+}
