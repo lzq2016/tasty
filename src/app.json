@@ -12,15 +12,27 @@
     "backgroundColor":"#000000"
   },
   "tabBar": {
-    "color": "red",
+    "color": "#D5D5D5",
+    "selectedColor":"#000000",
+    "backgroundColor":"#ffffff",
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页"
+        "text": "首页",
+        "iconPath":"images/home.png",
+        "selectedIconPath":"images/homeSelect.png"
+      },
+      {
+        "pagePath": "pages/find/find",
+        "text": "发现",
+        "iconPath": "images/find.png",
+        "selectedIconPath": "images/findSelect.png"
       },
       {
         "pagePath": "pages/logs/logs",
-        "text": "日志"
+        "text": "我",
+        "iconPath": "images/me.png",
+        "selectedIconPath": "images/meSelect.png"
       }
     ]
   },

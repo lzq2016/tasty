@@ -1,0 +1,5 @@
+<!--find.wxml-->
+<view>
+  <text style="font-size:30rpx;">#香港美食#</text>
+  <image style="width: 13rpx; height: 20rpx;" src="../../images/arrowRight.png"></image>
+</view>
