@@ -15,7 +15,7 @@ Page({
             url: 'https://www.sharetasty.com:8443/client/CommunityService/searchHotTopic',
             data: {
                 pageNum: 0,
-                pageCount: 1
+                pageCount: 10
             },
             success: function (res) {
                 console.log(res.data)
