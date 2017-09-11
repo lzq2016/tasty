@@ -2,7 +2,8 @@
   "pages":[
     "pages/index/index",
     "pages/logs/logs",
-    "pages/test/test"
+    "pages/test/test",
+    "pages/find/find"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -18,19 +19,19 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页",
+        "text": "boss直聘",
         "iconPath":"images/home.png",
         "selectedIconPath":"images/homeSelect.png"
       },
       {
         "pagePath": "pages/find/find",
-        "text": "发现",
+        "text": "boss直聘",
         "iconPath": "images/find.png",
         "selectedIconPath": "images/findSelect.png"
       },
       {
         "pagePath": "pages/logs/logs",
-        "text": "我",
+        "text": "boss直聘",
         "iconPath": "images/me.png",
         "selectedIconPath": "images/meSelect.png"
       }

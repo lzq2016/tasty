@@ -1,5 +1,15 @@
 <!--find.wxml-->
-<view>
-  <text style="font-size:30rpx;">#香港美食#</text>
-  <image style="width: 13rpx; height: 20rpx;" src="../../images/arrowRight.png"></image>
+<view wx:for="{{list}}" wx:for-item="items">
+    <view style="display:flex;flex-direction:row;justify-content:space-between;   align-items:center;">
+        <text style="font-size:30rpx;margin-left:20rpx;">#{{items.name}}#</text>
+        <image style="width: 13rpx; height: 20rpx;margin-right:20rpx;" src="../../images/arrowRight.png"></image>
+    </view>
+    <scroll-view scroll-x="true" style="white-space: nowrap; display: flex;border-bottom:1rpx solid #eee;padding-bottom:20rpx;">
+        <image style="width: 260rpx; height: 200rpx;margin-right:20rpx;" wx:for="{{items.notes}}" wx:for-item="item" src="{{item.img_s}}"></image>
+        <!-- <image style="width: 260rpx; height: 200rpx;margin-right:20rpx;" src="../../imagesDemo/1.png"></image>
+        <image style="width: 260rpx; height: 200rpx;margin-right:20rpx;" src="../../imagesDemo/1.png"></image> -->
+    </scroll-view>
+</view>
+<view wx:for="{{array}}">
+  {{index}}: {{item.message}}
 </view>
