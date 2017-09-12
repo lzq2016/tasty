@@ -8,25 +8,30 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo: {}
+    userInfo: "123"
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      wx.request({
-          url: 'https://www.sharetasty.com:8443/client/UserService/searchUserById',
-          data: {
-              token : app.globalData.token,
-              user_id: app.globalData.id,
-              pageNum: 0,
-              pageCount: 20
-          },
-          success: function (res) {
-              console.log(res.data)
-          }
-      })
+    var self = this;
+    console.log(app.globalData.userInfo);
+    // self.userInfo = app.globalData.userInfo;
+    this.setData({ userInfo: app.globalData.userInfo });
+    console.log(self.userInfo);
+    wx.request({
+      url: 'https://www.sharetasty.com:8443/client/UserService/searchUserById',
+      data: {
+        token: app.globalData.token,
+        user_id: app.globalData.id,
+        pageNum: 0,
+        pageCount: 20
+      },
+      success: function (res) {
+        console.log(res.data)
+      }
+    })
   },
 
   /**
