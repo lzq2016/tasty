@@ -1,1 +1,18 @@
 /* pages/selectCity/selectCity.wxss */
+
+.box {
+    width: 400rpx;
+    padding: 100rpx 50rpx;
+    margin: 0 auto;
+    border: 10rpx solid black;
+}
+
+view {
+    line-height: 50px;
+    padding-left: 20px;
+}
+.cityPicker{
+    height: 50px;
+    border-top: 1rpx solid red;
+    border-bottom: 1rpx solid red;
+}

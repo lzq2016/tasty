@@ -23,29 +23,30 @@ App({
                                 success: res => {
                                     // 发送 res.code 到后台换取 openId, sessionKey, unionId
                                     if (res.code) {
-                                        // wx.request({
-                                        //     url: 'https://api.weixin.qq.com/sns/jscode2session',
-                                        //     data: {
-                                        //         appid: "wx5594f96e8f1d7639",
-                                        //         secret: "29332ca8353c013c14ab74e1e7714bc1",
-                                        //         js_code: res.code,
-                                        //         grant_type: "authorization_code"
-                                        //     },
-                                        //     success: function (res) {
-                                        //         console.log(res);
-                                        //     }
-                                        // }),
                                         wx.request({
-                                            url: 'https://www.sharetasty.com:8443/client/UserService/userLoginByOther4',
+                                            url: 'https://api.weixin.qq.com/sns/jscode2session',
                                             data: {
-                                                type: "weixing",
-                                                otherId: res.code,
-                                                headPortrait: this.globalData.userInfo.avatarUrl,
-                                                nickname: this.globalData.userInfo.nickName
+                                                appid: "wx5594f96e8f1d7639",
+                                                secret: "29332ca8353c013c14ab74e1e7714bc1",
+                                                js_code: res.code,
+                                                grant_type: "authorization_code"
                                             },
                                             success: function (res) {
-                                                self.globalData.token = res.data.result.token;
-                                                self.globalData.id = res.data.result.id;
+                                                console.log(res,"res");
+                                                self.globalData.openId = res.data.openid;
+                                                wx.request({
+                                                    url: 'https://www.sharetasty.com:8443/client/UserService/userLoginByOther4',
+                                                    data: {
+                                                        type: "weixing",
+                                                        otherId: self.globalData.openId,
+                                                        headPortrait: self.globalData.userInfo.avatarUrl,
+                                                        nickname: self.globalData.userInfo.nickName
+                                                    },
+                                                    success: function (res) {
+                                                        self.globalData.token = res.data.result.token;
+                                                        self.globalData.id = res.data.result.id;
+                                                    }
+                                                })     
                                             }
                                         })
                                     } else {
