@@ -55,6 +55,25 @@ Page({
       list2: this.data.list
     });
   },
+  onLoad: function (options) {
+      var self = this;
+      console.log(app.globalData.userInfo);
+      // self.userInfo = app.globalData.userInfo;
+      this.setData({ userInfo: app.globalData.userInfo });
+      console.log(self.userInfo);
+      wx.request({
+          url: 'https://www.sharetasty.com:8443/client/UserService/searchUserById',
+          data: {
+              token: app.globalData.token,
+              user_id: app.globalData.id,
+              pageNum: 0,
+              pageCount: 20
+          },
+          success: function (res) {
+              console.log(res.data, "me")
+          }
+      })
+  },
   loadImage: function (e) {
     var vm = this;
     var windowWidth = wx.getSystemInfoSync().windowWidth;
