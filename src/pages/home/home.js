@@ -1,122 +1,110 @@
 // pages/others/waterfall/waterfall.js
+let col1H = 0;
+let col2H = 0;
+
 Page({
+
   data: {
-    list: [
-      {
-        url: '/imagesDemo/example0.png',
-        name: '《虫师》'
-      },
-      {
-        url: '/imagesDemo/example1.png',
-        name: '《loading》'
-      },
-      {
-        url: '/imagesDemo/example2.png',
-        name: '《冰与火之歌》'
-      },
-      {
-        url: '/imagesDemo/example3.png',
-        name: '《鹿丸》'
-      },
-      {
-        url: '/imagesDemo/example4.png',
-        name: '《星空》'
-      },
-      {
-        url: '/imagesDemo/example0.png',
-        name: '《虫师》'
-      },
-      {
-        url: '/imagesDemo/example1.png',
-        name: '《loading》'
-      },
-      {
-        url: '/imagesDemo/example2.png',
-        name: '《冰与火之歌》'
-      },
-      {
-        url: '/imagesDemo/example3.png',
-        name: '《鹿丸》'
-      },
-      {
-        url: '/imagesDemo/example4.png',
-        name: '《星空》'
-      }
-    ],
-    leftHeight: 0,
-    rightHeight: 0,
-    length: 10,
-    pageNo: 1,
-    descHeight: 30, //图片文字描述的高度
-    pageStatus: true
+    scrollH: 0,
+    imgWidth: 0,
+    loadingCount: 0,
+    images: [],
+    col1: [],
+    col2: []
   },
-  onShow: function () {
+
+  onLoad: function () {
+    wx.getSystemInfo({
+      success: (res) => {
+        let ww = res.windowWidth;
+        let wh = res.windowHeight;
+        let imgWidth = ww * 0.48
+        let scrollH = wh;
+
+        this.setData({
+          scrollH: scrollH,
+          imgWidth: imgWidth
+        });
+
+        this.loadImages();
+      }
+    })
+  },
+
+  onImageLoad: function (e) {
+    let imageId = e.currentTarget.id;
+    let oImgW = e.detail.width;         //图片原始宽度
+    let oImgH = e.detail.height;        //图片原始高度
+    let imgWidth = this.data.imgWidth;  //图片设置的宽度
+    let scale = imgWidth / oImgW;        //比例计算
+    let imgHeight = oImgH * scale;      //自适应高度
+
+    let images = this.data.images;
+    let imageObj = null;
+
+    for (let i = 0; i < images.length; i++) {
+      let img = images[i];
+      if (img.id === imageId) {
+        imageObj = img;
+        break;
+      }
+    }
+
+    imageObj.height = imgHeight;
+
+    let loadingCount = this.data.loadingCount - 1;
+    let col1 = this.data.col1;
+    let col2 = this.data.col2;
+
+    if (col1H <= col2H) {
+      col1H += imgHeight;
+      col1.push(imageObj);
+    } else {
+      col2H += imgHeight;
+      col2.push(imageObj);
+    }
+
+    let data = {
+      loadingCount: loadingCount,
+      col1: col1,
+      col2: col2
+    };
+
+    if (!loadingCount) {
+      data.images = [];
+    }
+
+    this.setData(data);
+  },
+
+  loadImages: function () {
+    let images = [
+      { pic: "/imagesDemo/1.png", height: 0 },
+      { pic: "/imagesDemo/2.png", height: 0 },
+      { pic: "/imagesDemo/3.png", height: 0 },
+      { pic: "/imagesDemo/4.png", height: 0 },
+      { pic: "/imagesDemo/5.png", height: 0 },
+      { pic: "/imagesDemo/6.png", height: 0 },
+      { pic: "/imagesDemo/7.png", height: 0 },
+      { pic: "/imagesDemo/8.png", height: 0 },
+      { pic: "/imagesDemo/9.png", height: 0 },
+      { pic: "/imagesDemo/10.png", height: 0 },
+      { pic: "/imagesDemo/11.png", height: 0 },
+      { pic: "/imagesDemo/12.png", height: 0 },
+      { pic: "/imagesDemo/13.png", height: 0 },
+      { pic: "/imagesDemo/14.png", height: 0 }
+    ];
+
+    let baseId = "img-" + (+new Date());
+
+    for (let i = 0; i < images.length; i++) {
+      images[i].id = baseId + "-" + i;
+    }
+
     this.setData({
-      list2: this.data.list
+      loadingCount: images.length,
+      images: images
     });
-  },
-  onLoad: function (options) {
-      var self = this;
-      console.log(app.globalData.userInfo);
-      // self.userInfo = app.globalData.userInfo;
-      this.setData({ userInfo: app.globalData.userInfo });
-      console.log(self.userInfo);
-      wx.request({
-          url: 'https://www.sharetasty.com:8443/client/UserService/searchUserById',
-          data: {
-              token: app.globalData.token,
-              user_id: app.globalData.id,
-              pageNum: 0,
-              pageCount: 20
-          },
-          success: function (res) {
-              console.log(res.data, "me")
-          }
-      })
-  },
-  loadImage: function (e) {
-    var vm = this;
-    var windowWidth = wx.getSystemInfoSync().windowWidth;
-    var index = e.currentTarget.dataset.index;
-    vm.data.list[index].height = windowWidth / 2 / e.detail.width * e.detail.height;
-    var count = 0;
-    for (var i = (vm.data.pageNo - 1) * vm.data.length; i < vm.data.list.length; i++) {
-      if (vm.data.list[i].height) {
-        count++;
-      }
-    }
-    if (count == vm.data.length) {
-      for (var i = (vm.data.pageNo - 1) * vm.data.length; i < vm.data.list.length; i++) {
-        if (vm.data.leftHeight <= vm.data.rightHeight) {
-          vm.data.list[i].top = vm.data.leftHeight;
-          vm.data.list[i].left = windowWidth * 0.005;
-          vm.setData({
-            leftHeight: vm.data.leftHeight + vm.data.list[i].height + vm.data.descHeight
-          });
-        } else {
-          vm.data.list[i].top = vm.data.rightHeight;
-          vm.data.list[i].left = windowWidth / 2 - windowWidth * 0.005;
-          vm.setData({
-            rightHeight: vm.data.rightHeight + vm.data.list[i].height + vm.data.descHeight
-          });
-        }
-      }
-      vm.setData({
-        list: vm.data.list
-      });
-    }
-  },
-  onReachBottom: function () {
-    var vm = this;
-    vm.setData({
-      pageStatus: true
-    });
-    setTimeout(function () {
-      vm.setData({
-        pageNo: vm.data.pageNo + 1,
-        list: vm.data.list.concat(vm.data.list2),
-        pageStatus: false
-      });
-    }, 2000);
   }
+
 })

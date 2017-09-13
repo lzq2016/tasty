@@ -8,7 +8,9 @@ Page({
      * 页面的初始数据
      */
     data: {
-        userInfo: "123"
+        userInfo: "",
+        user:{},
+        collect_notes:[]
     },
 
     /**
@@ -16,7 +18,6 @@ Page({
      */
     onLoad: function (options) {
         var self = this;
-        console.log(app.globalData.userInfo);
         // self.userInfo = app.globalData.userInfo;
         this.setData({ userInfo: app.globalData.userInfo });
         console.log(self.userInfo);
@@ -29,7 +30,9 @@ Page({
                 pageCount: 20
             },
             success: function (res) {
-                console.log(res.data, "me")
+              console.log(res.data.result, "me")
+              self.setData({ user: res.data.result.user })
+              self.setData({ collect_notes: res.data.result.collect_notes})
             }
         })
     },

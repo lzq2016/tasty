@@ -15,7 +15,7 @@ Page({
         areas: [],
         value: [0, 0, 0],
         name: '',
-        show: false
+        show: true
     },
     initData: function () {
         var provinces = [];

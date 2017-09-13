@@ -1,6 +1,6 @@
 <!--pages/selectCity/selectCity.wxml-->
 <view class="box"  wx:if="{{show}}">
-    <picker-view  indicator-class="cityPicker" mask-style="cityPickerMask" style="width: 400rpx; height: 150px;" value="{{value}}" bindchange="bindChange">
+    <picker-view  indicator-class="cityPicker" mask-class="cityPickerMask" style="" value="{{value}}" bindchange="bindChange" class='citypickerWrap'>
         <picker-view-column>
             <view wx:for="{{provinces}}">{{item}}</view>
         </picker-view-column>
@@ -9,6 +9,7 @@
         </picker-view-column>
     </picker-view>
 </view>
+<view class='layer'></view>
 
 <view style='margin-top:"20px;"'>{{name}}</view>
 <button bindtap="setLoading">点击设置以上按钮loading属性</button>
