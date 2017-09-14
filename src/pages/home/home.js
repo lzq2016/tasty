@@ -10,7 +10,8 @@ Page({
     loadingCount: 0,
     images: [],
     col1: [],
-    col2: []
+    col2: [],
+    loadingShow:false
   },
 
   onLoad: function () {
@@ -78,6 +79,10 @@ Page({
   },
 
   loadImages: function () {
+      console.log("loading images")
+      this.setData({
+          loadingShow: true
+      });
     let images = [
       { pic: "/imagesDemo/1.png", height: 0 },
       { pic: "/imagesDemo/2.png", height: 0 },
@@ -85,14 +90,14 @@ Page({
       { pic: "/imagesDemo/4.png", height: 0 },
       { pic: "/imagesDemo/5.png", height: 0 },
       { pic: "/imagesDemo/6.png", height: 0 },
-      { pic: "/imagesDemo/7.png", height: 0 },
-      { pic: "/imagesDemo/8.png", height: 0 },
-      { pic: "/imagesDemo/9.png", height: 0 },
-      { pic: "/imagesDemo/10.png", height: 0 },
-      { pic: "/imagesDemo/11.png", height: 0 },
-      { pic: "/imagesDemo/12.png", height: 0 },
-      { pic: "/imagesDemo/13.png", height: 0 },
-      { pic: "/imagesDemo/14.png", height: 0 }
+      { pic: "http://lzqrebate.oss-cn-beijing.aliyuncs.com/7.png", height: 0 },
+      { pic: "http://lzqrebate.oss-cn-beijing.aliyuncs.com/8.png", height: 0 },
+      { pic: "http://lzqrebate.oss-cn-beijing.aliyuncs.com/9.png", height: 0 },
+      { pic: "http://lzqrebate.oss-cn-beijing.aliyuncs.com/10.png", height: 0 },
+      { pic: "http://lzqrebate.oss-cn-beijing.aliyuncs.com/11.png", height: 0 },
+      { pic: "http://lzqrebate.oss-cn-beijing.aliyuncs.com/12.png", height: 0 },
+      { pic: "http://lzqrebate.oss-cn-beijing.aliyuncs.com/13.png", height: 0 },
+      { pic: "http://lzqrebate.oss-cn-beijing.aliyuncs.com/14.png", height: 0 }
     ];
 
     let baseId = "img-" + (+new Date());
@@ -100,7 +105,9 @@ Page({
     for (let i = 0; i < images.length; i++) {
       images[i].id = baseId + "-" + i;
     }
-
+      this.setData({
+          loadingShow: false
+      });
     this.setData({
       loadingCount: images.length,
       images: images
