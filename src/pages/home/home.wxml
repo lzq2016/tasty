@@ -3,10 +3,10 @@
     <image src="/images/dizhi.png" style="width:22rpx;height:28rpx;vertical-align:middle;"></image>
     <text style='color:#474646;font-size:24rpx;vertical-align:middle;margin-left:10rpx;'>北京</text>
   </view>
-  <view style='background-color:#EDEDED;width:390rpx;height:55rpx;border-radius:30rpx;text-align:center;'>
+  <navigator url="/pages/search/search" hover-class="none" style='background-color:#EDEDED;width:390rpx;height:55rpx;border-radius:30rpx;text-align:center;'>
     <image src="/images/search.png" style="width:30rpx;height:30rpx;vertical-align:middle;"></image>
     <text style='color:#979797;font-size:24rpx;vertical-align:middle;margin-left:10rpx;'>搜索</text>
-  </view>
+  </navigator>
 </view>
 <view style="display:none">
   <image wx:for="{{images}}" wx:key="id" id="{{item.id}}" src="{{item.pic}}" bindload="onImageLoad"></image>
