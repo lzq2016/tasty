@@ -84,15 +84,7 @@ Page({
       { pic: "/imagesDemo/3.png", height: 0 },
       { pic: "/imagesDemo/4.png", height: 0 },
       { pic: "/imagesDemo/5.png", height: 0 },
-      { pic: "/imagesDemo/6.png", height: 0 },
-      { pic: "/imagesDemo/7.png", height: 0 },
-      { pic: "/imagesDemo/8.png", height: 0 },
-      { pic: "/imagesDemo/9.png", height: 0 },
-      { pic: "/imagesDemo/10.png", height: 0 },
-      { pic: "/imagesDemo/11.png", height: 0 },
-      { pic: "/imagesDemo/12.png", height: 0 },
-      { pic: "/imagesDemo/13.png", height: 0 },
-      { pic: "/imagesDemo/14.png", height: 0 }
+      { pic: "/imagesDemo/6.png", height: 0 }
     ];
 
     let baseId = "img-" + (+new Date());
