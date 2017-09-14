@@ -57,28 +57,6 @@ App({
                         }
                     })
                 }
-                if (res.authSetting['scope.userLocation'])
-                {
-                    wx.getLocation({
-                        type: 'wgs84',
-                        success: function (res) {
-                            var latitude = res.latitude
-                            var longitude = res.longitude
-                            wx.request({
-                                url: 'https://apis.map.qq.com/ws/geocoder/v1/',
-                                data: {
-                                    location: res.latitude + ',' + res.longitude,
-                                    key: "O2JBZ-CPCC4-6K6UQ-XPDQJ-4LCPE-NZBWJ",
-                                    get_poi: 0
-                                },
-                                success: function (res) {
-                                    // console.log(res.data.result.ad_info.adcode,"location");
-                                    self.globalData.token = res.data.result.ad_info.adcode;                                    
-                                }
-                            })    
-                        }
-                    })
-                }
             }
         })
     },
