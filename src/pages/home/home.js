@@ -10,7 +10,8 @@ Page({
     loadingCount: 0,
     images: [],
     col1: [],
-    col2: []
+    col2: [],
+    loadingShow:false
   },
 
   onLoad: function () {
@@ -29,6 +30,27 @@ Page({
         this.loadImages();
       }
     })
+    // if (res.authSetting['scope.userLocation']) {
+    //     wx.getLocation({
+    //         type: 'wgs84',
+    //         success: function (res) {
+    //             var latitude = res.latitude
+    //             var longitude = res.longitude
+    //             wx.request({
+    //                 url: 'https://apis.map.qq.com/ws/geocoder/v1/',
+    //                 data: {
+    //                     location: res.latitude + ',' + res.longitude,
+    //                     key: "O2JBZ-CPCC4-6K6UQ-XPDQJ-4LCPE-NZBWJ",
+    //                     get_poi: 0
+    //                 },
+    //                 success: function (res) {
+    //                     // console.log(res.data.result.ad_info.adcode,"location");
+    //                     // self.globalData.token = res.data.result.ad_info.adcode;                                    
+    //                 }
+    //             })
+    //         }
+    //     })
+    // }
   },
 
   onImageLoad: function (e) {
@@ -78,13 +100,25 @@ Page({
   },
 
   loadImages: function () {
+      console.log("loading images")
+      this.setData({
+          loadingShow: true
+      });
     let images = [
       { pic: "/imagesDemo/1.png", height: 0 },
       { pic: "/imagesDemo/2.png", height: 0 },
       { pic: "/imagesDemo/3.png", height: 0 },
       { pic: "/imagesDemo/4.png", height: 0 },
       { pic: "/imagesDemo/5.png", height: 0 },
-      { pic: "/imagesDemo/6.png", height: 0 }
+      { pic: "/imagesDemo/6.png", height: 0 },
+      { pic: "http://lzqrebate.oss-cn-beijing.aliyuncs.com/7.png", height: 0 },
+      { pic: "http://lzqrebate.oss-cn-beijing.aliyuncs.com/8.png", height: 0 },
+      { pic: "http://lzqrebate.oss-cn-beijing.aliyuncs.com/9.png", height: 0 },
+      { pic: "http://lzqrebate.oss-cn-beijing.aliyuncs.com/10.png", height: 0 },
+      { pic: "http://lzqrebate.oss-cn-beijing.aliyuncs.com/11.png", height: 0 },
+      { pic: "http://lzqrebate.oss-cn-beijing.aliyuncs.com/12.png", height: 0 },
+      { pic: "http://lzqrebate.oss-cn-beijing.aliyuncs.com/13.png", height: 0 },
+      { pic: "http://lzqrebate.oss-cn-beijing.aliyuncs.com/14.png", height: 0 }
     ];
 
     let baseId = "img-" + (+new Date());
@@ -92,7 +126,9 @@ Page({
     for (let i = 0; i < images.length; i++) {
       images[i].id = baseId + "-" + i;
     }
-
+      this.setData({
+          loadingShow: false
+      });
     this.setData({
       loadingCount: images.length,
       images: images

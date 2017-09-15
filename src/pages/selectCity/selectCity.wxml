@@ -1,15 +1,13 @@
 <!--pages/selectCity/selectCity.wxml-->
-<view class="box"  wx:if="{{show}}">
-    <picker-view  indicator-class="cityPicker" mask-class="cityPickerMask" style="" value="{{value}}" bindchange="bindChange" class='citypickerWrap'>
-        <picker-view-column>
-            <view wx:for="{{provinces}}">{{item}}</view>
-        </picker-view-column>
-        <picker-view-column>
-            <view wx:for="{{citys}}">{{item}}</view>
-        </picker-view-column>
-    </picker-view>
-</view>
-<view class='layer'></view>
-
-<view style='margin-top:"20px;"'>{{name}}</view>
-<button bindtap="setLoading">点击设置以上按钮loading属性</button>
+<!-- <picker mode="multiSelector" bindchange="bindPickerChange" value="{{index}}" range="{{array}}" range-key="{{'province'}}">
+    <button type="default">单列选择器</button>
+</picker> -->
+ <!-- <picker bindchange="bindPickerChange" value="{{index}}" range="{{location}}" range-key="{{'province'}}">
+     <button type="default">单列选择器</button>
+</picker>  -->
+<picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key="{{'name'}}">
+     <button type="default">单列选择器</button>
+   
+  </picker>
+<!-- <view style='margin-top:"20px;"'>{{name}}</view> -->
+<!-- <button bindtap="setLoading">点击设置以上按钮loading属性</button> -->
