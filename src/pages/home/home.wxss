@@ -36,6 +36,7 @@
   width: 100%;
   text-align: center;
   padding: 30rpx 0;
+  background-color: #F2F2F2;
 }
 
 .loading_box>view {

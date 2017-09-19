@@ -19,8 +19,8 @@ Page({
     onLoad: function (options) {
         var self = this;
         // self.userInfo = app.globalData.userInfo;
-        this.setData({ userInfo: app.globalData.userInfo });
-        console.log(self.userInfo);
+        // this.setData({ userInfo: app.globalData.userInfo });
+        // console.log(self.userInfo);
         wx.request({
             url: 'https://www.sharetasty.com:8443/client/UserService/searchUserById',
             data: {
