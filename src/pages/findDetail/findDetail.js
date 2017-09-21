@@ -1,8 +1,5 @@
-// pages/others/waterfall/waterfall.js
+// pages/findDetail/findDetail.js
 const app = getApp()
-
-var cityData = require('citydata.js');
-var cityInit = require('cityInit.js');
 
 let col1H = 0;
 let col2H = 0;
@@ -18,45 +15,14 @@ Page({
     col1: [],
     col2: [],
     loadingShow: false,
-    citysData: cityData.citysData,
-    multiArray: [],
-    multiIndex: [0, 0],
-    selectCity: "北京",
     pageNum: 0,
     pageCount: 20,
     adcode: null,
     latitude: null,
     longitude: null
   },
-  bindMultiPickerChange: function (e) {
-    var self = this;
-    console.log('picker发送选择改变，携带值为', e.detail.value)
-    this.setData({
-      multiIndex: e.detail.value
-    })
-    console.log(this.data.multiArray[1][e.detail.value[1]])
-    this.setData({ selectCity: self.data.multiArray[1][e.detail.value[1]].name })
-  },
-  bindMultiPickerColumnChange: function (e) {
-    console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
-    var data = {
-      multiArray: this.data.multiArray,
-      multiIndex: this.data.multiIndex
-    };
-    data.multiIndex[e.detail.column] = e.detail.value;
-    switch (e.detail.column) {
-      case 0:
-        // console.log(data.multiIndex[0], "13333333")
-        // console.log(cityData.citysData[data.multiIndex[0]].citys, "121212")
-        data.multiArray[1] = cityData.citysData[data.multiIndex[0]].citys;
-        break;
-    }
-    this.setData(data);
-  },
   onLoad: function () {
-    console.log(434345454)
     var self = this;
-    this.setData({ multiArray: cityInit.citysData });
     wx.getSetting({
       success: (res) => {
         if (res.authSetting['scope.userLocation']) {
@@ -199,7 +165,7 @@ Page({
     this.setData(data);
   },
   loading: function () {
-    
+
   },
   loadImages: function () {
     console.log("loading images")

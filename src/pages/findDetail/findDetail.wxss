@@ -1,5 +1,4 @@
-/* pages/others/waterfall/waterfall.wxss */
-
+/* pages/findDetail/findDetail.wxss */
 .img_item {
   width: 46%;
   display: inline-block;
@@ -89,9 +88,3 @@
   }
 }
 
-.content {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  overflow: hidden;
-}

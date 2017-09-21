@@ -18,7 +18,7 @@ Page({
                 pageCount: 10
             },
             success: function (res) {
-                console.log(res.data)
+                console.log(res.data,"发现接口")
                 if (res.data.resultstate == 1) {
                     self.setData({list:res.data.result});
                 }

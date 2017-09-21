@@ -1,6 +1,7 @@
 {
   "pages":[
     "pages/home/home",
+    "pages/findDetail/findDetail",
     "pages/find/find",
     "pages/search/search",
     "pages/me/me",

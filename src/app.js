@@ -43,6 +43,7 @@ App({
                                                         nickname: self.globalData.userInfo.nickName
                                                     },
                                                     success: function (res) {
+                                                        console.log(res,"登录接口")
                                                         self.globalData.token = res.data.result.token;
                                                         self.globalData.id = res.data.result.id;
                                                     }
