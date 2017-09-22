@@ -34,8 +34,12 @@ Page({
     this.setData({
       multiIndex: e.detail.value
     })
-    console.log(this.data.multiArray[1][e.detail.value[1]])
-    this.setData({ selectCity: self.data.multiArray[1][e.detail.value[1]].name })
+    console.log(this.data.multiArray[1][e.detail.value[1]], "选择的城市数据")
+    this.setData({
+      selectCity: self.data.multiArray[1][e.detail.value[1]].name,
+      adcode: self.data.multiArray[1][e.detail.value[1]].cityid
+    })
+    self.continueLoading(self, 1);
   },
   bindMultiPickerColumnChange: function (e) {
     console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
@@ -199,7 +203,7 @@ Page({
     this.setData(data);
   },
   loading: function () {
-    
+
   },
   loadImages: function () {
     console.log("loading images")
@@ -240,9 +244,7 @@ Page({
       images: self.data.preImage
     });
   },
-  onReachBottom: function () {
-    console.log(8888888888)
-    var self = this;
+  continueLoading: function (self, types) {
     wx.request({
       url: 'https://www.sharetasty.com:8443/client/NewCommunityService/searchNotesIndex3',
       data: {
@@ -257,9 +259,11 @@ Page({
       success: function (res) {
         self.setData({ pageNum: self.data.pageNum + 1 });
         var images = [];
-        self.data.preImage.forEach(function (item) {
-          images.push(item);
-        });
+        if (types != 1) {
+          self.data.preImage.forEach(function (item) {
+            images.push(item);
+          });
+        }
         res.data.result.notes.forEach(function (item) {
           images.push({
             pic: item.img_s,
@@ -289,6 +293,10 @@ Page({
         })
       }
     })
+  },
+  onReachBottom: function () {
+    var self = this;
+    self.continueLoading(self, 0);
   }
 
 })

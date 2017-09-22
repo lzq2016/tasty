@@ -17,106 +17,54 @@ Page({
     loadingShow: false,
     pageNum: 0,
     pageCount: 20,
-    adcode: null,
-    latitude: null,
-    longitude: null
+    hotTopic_id:null
   },
-  onLoad: function () {
+  onLoad: function (options) {
     var self = this;
-    wx.getSetting({
-      success: (res) => {
-        if (res.authSetting['scope.userLocation']) {
-          wx.getLocation({
-            type: 'wgs84',
-            success: function (res) {
-              self.setData({ latitude: res.latitude, longitude: res.longitude });
-              var latitude = res.latitude
-              var longitude = res.longitude
-              wx.request({
-                url: 'https://apis.map.qq.com/ws/geocoder/v1/',
-                data: {
-                  location: res.latitude + ',' + res.longitude,
-                  key: "O2JBZ-CPCC4-6K6UQ-XPDQJ-4LCPE-NZBWJ",
-                  get_poi: 0
-                },
-                success: function (res) {
-                  console.log(res.data.result.ad_info.adcode, "location");
-                  self.setData({ adcode: res.data.result.ad_info.adcode });
-                  // self.globalData.token = res.data.result.ad_info.adcode; 
-                  wx.request({
-                    url: 'https://www.sharetasty.com:8443/client/NewCommunityService/searchNotesIndex3',
-                    data: {
-                      type: 1,
-                      token: app.globalData.token,
-                      pageNum: self.data.pageNum,
-                      pageCount: self.data.pageCount,
-                      areaid: res.data.result.ad_info.adcode,
-                      latitude: latitude,
-                      longitude: longitude
-                    },
-                    success: function (res) {
-                      console.log(res.data.result, "1345");
-                      self.setData({ pageNum: self.data.pageNum + 1 });
-                      var images = [];
-                      res.data.result.notes.forEach(function (item) {
-                        images.push({
-                          pic: item.img_s,
-                          title: item.title,
-                          content: item.content,
-                          headPortrait: item.headPortrait,
-                          nickname: item.nickname,
-                          count: item.praised_count,
-                          note_id: item.note_id,
-                          height: 0
-                        });
-                      });
-                      self.setData({ preImage: images });
-                      console.log(self.data.preImage, "preimage");
-                      wx.getSystemInfo({
-                        success: (res) => {
-                          let ww = res.windowWidth;
-                          let wh = res.windowHeight;
-                          let imgWidth = ww * 0.48
-                          let scrollH = wh;
+    self.setData({ hotTopic_id: options.hotTopic_id});
+    wx.request({
+      url: 'https://www.sharetasty.com:8443/client/CommunityService/searchHotTopicNotes',
+      data: {
+        token: app.globalData.token,
+        pageNum: self.data.pageNum,
+        pageCount: self.data.pageCount,
+        hotTopic_id: options.hotTopic_id
+      },
+      success: function (res) {
+        console.log(res.data.result, "热门话题详情页接口");
+        self.setData({ pageNum: self.data.pageNum + 1 });
+        var images = [];
+        res.data.result.forEach(function (item) {
+          images.push({
+            pic: item.img_s,
+            title: item.title,
+            content: item.content,
+            headPortrait: item.headPortrait,
+            nickname: item.nickname,
+            count: item.praised_count,
+            note_id: item.note_id,
+            height: 0
+          });
+        });
+        self.setData({ preImage: images });
+        console.log(self.data.preImage, "preimage");
+        wx.getSystemInfo({
+          success: (res) => {
+            let ww = res.windowWidth;
+            let wh = res.windowHeight;
+            let imgWidth = ww * 0.48
+            let scrollH = wh;
 
-                          self.setData({
-                            scrollH: scrollH,
-                            imgWidth: imgWidth
-                          });
+            self.setData({
+              scrollH: scrollH,
+              imgWidth: imgWidth
+            });
 
-                          self.loadImages();
-                        }
-                      })
-                    }
-                  })
-                }
-              })
-            }
-          })
-        }
+            self.loadImages();
+          }
+        })
       }
     })
-    // if (res.authSetting['scope.userLocation']) {
-    //     wx.getLocation({
-    //         type: 'wgs84',
-    //         success: function (res) {
-    //             var latitude = res.latitude
-    //             var longitude = res.longitude
-    //             wx.request({
-    //                 url: 'https://apis.map.qq.com/ws/geocoder/v1/',
-    //                 data: {
-    //                     location: res.latitude + ',' + res.longitude,
-    //                     key: "O2JBZ-CPCC4-6K6UQ-XPDQJ-4LCPE-NZBWJ",
-    //                     get_poi: 0
-    //                 },
-    //                 success: function (res) {
-    //                     // console.log(res.data.result.ad_info.adcode,"location");
-    //                     // self.globalData.token = res.data.result.ad_info.adcode;                                    
-    //                 }
-    //             })
-    //         }
-    //     })
-    // }
   },
 
   onImageLoad: function (e) {
@@ -210,15 +158,12 @@ Page({
     console.log(8888888888)
     var self = this;
     wx.request({
-      url: 'https://www.sharetasty.com:8443/client/NewCommunityService/searchNotesIndex3',
+      url: 'https://www.sharetasty.com:8443/client/CommunityService/searchHotTopicNotes',
       data: {
-        type: 1,
         token: app.globalData.token,
         pageNum: self.data.pageNum,
         pageCount: self.data.pageCount,
-        areaid: self.data.adcode,
-        latitude: self.data.latitude,
-        longitude: self.data.longitude
+        hotTopic_id: self.data.hotTopic_id
       },
       success: function (res) {
         self.setData({ pageNum: self.data.pageNum + 1 });
@@ -226,7 +171,7 @@ Page({
         self.data.preImage.forEach(function (item) {
           images.push(item);
         });
-        res.data.result.notes.forEach(function (item) {
+        res.data.result.forEach(function (item) {
           images.push({
             pic: item.img_s,
             title: item.title,
