@@ -9,8 +9,8 @@ Page({
    */
   data: {
     note_id: null,
-    pageNum:1,
-    pageCount:20,
+    pageNum: 1,
+    pageCount: 20,
     img_s: null,
     nickname: null,
     headPortrait: null,
@@ -20,7 +20,7 @@ Page({
     collect_count: null,
     praise_count: null,
     img_url: [],
-    address:null
+    address: null
   },
 
   /**
@@ -58,7 +58,35 @@ Page({
       }
     })
   },
+  shoucang: function (e) {
+    var self = this;
+    wx.request({
+      url: 'https://www.sharetasty.com:8443/client/CommunityService/collectNote',
+      data: {
+        note_id: self.data.note_id,
+        token: app.globalData.token,
+        type: 1
+      },
+      success: function (res) {
+        console.log(res, "shoucang");
+        if (res.data.resultstate == 1) {
+          wx.showToast({
+            title: '收藏成功',
+            icon: 'success',
+            duration: 3000
+          });
+        }
+        else {
+          wx.showToast({
+            title: '收藏失败',
+            icon: 'success',
+            duration: 2000
+          });
+        }
 
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

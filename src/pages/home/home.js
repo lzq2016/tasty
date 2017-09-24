@@ -50,15 +50,12 @@ Page({
     data.multiIndex[e.detail.column] = e.detail.value;
     switch (e.detail.column) {
       case 0:
-        // console.log(data.multiIndex[0], "13333333")
-        // console.log(cityData.citysData[data.multiIndex[0]].citys, "121212")
         data.multiArray[1] = cityData.citysData[data.multiIndex[0]].citys;
         break;
     }
     this.setData(data);
   },
   onLoad: function () {
-    console.log(434345454)
     var self = this;
     this.setData({ multiArray: cityInit.citysData });
     wx.getSetting({
@@ -134,27 +131,6 @@ Page({
         }
       }
     })
-    // if (res.authSetting['scope.userLocation']) {
-    //     wx.getLocation({
-    //         type: 'wgs84',
-    //         success: function (res) {
-    //             var latitude = res.latitude
-    //             var longitude = res.longitude
-    //             wx.request({
-    //                 url: 'https://apis.map.qq.com/ws/geocoder/v1/',
-    //                 data: {
-    //                     location: res.latitude + ',' + res.longitude,
-    //                     key: "O2JBZ-CPCC4-6K6UQ-XPDQJ-4LCPE-NZBWJ",
-    //                     get_poi: 0
-    //                 },
-    //                 success: function (res) {
-    //                     // console.log(res.data.result.ad_info.adcode,"location");
-    //                     // self.globalData.token = res.data.result.ad_info.adcode;                                    
-    //                 }
-    //             })
-    //         }
-    //     })
-    // }
   },
 
   onImageLoad: function (e) {
@@ -259,11 +235,11 @@ Page({
       success: function (res) {
         self.setData({ pageNum: self.data.pageNum + 1 });
         var images = [];
-        if (types != 1) {
-          self.data.preImage.forEach(function (item) {
-            images.push(item);
-          });
-        }
+        // if (types != 1) {
+        //   self.data.preImage.forEach(function (item) {
+        //     images.push(item);
+        //   });
+        // }
         res.data.result.notes.forEach(function (item) {
           images.push({
             pic: item.img_s,
@@ -275,7 +251,8 @@ Page({
             height: 0
           });
         });
-        self.setData({ preImage: images });
+        // self.setData({ preImage: images });
+        self.setData({ preImage: [] });
         wx.getSystemInfo({
           success: (res) => {
             let ww = res.windowWidth;
@@ -289,6 +266,53 @@ Page({
             });
 
             self.loadImages();
+            this.data.images.forEach(function (item, index) {
+              let imageId = e.currentTarget.id;
+              let oImgW = e.detail.width;         //图片原始宽度
+              let oImgH = e.detail.height;        //图片原始高度
+              let imgWidth = this.data.imgWidth;  //图片设置的宽度
+              let scale = imgWidth / oImgW;        //比例计算
+              let imgHeight = oImgH * scale;      //自适应高度
+
+              let images = this.data.images;
+              let imageObj = null;
+
+              for (let i = 0; i < images.length; i++) {
+                let img = images[i];
+                if (img.id === imageId) {
+                  imageObj = img;
+                  break;
+                }
+              }
+
+              imageObj.height = imgHeight;
+
+              let loadingCount = this.data.loadingCount - 1;
+              let col1 = this.data.col1;
+              let col2 = this.data.col2;
+
+              if (col1H <= col2H) {
+                col1H += imgHeight;
+                col1.push(imageObj);
+              } else {
+                col2H += imgHeight;
+                col2.push(imageObj);
+              }
+
+              let data = {
+                loadingCount: loadingCount,
+                col1: col1,
+                col2: col2
+              };
+              if (!loadingCount) {
+                data.images = [];
+              }
+
+              this.setData(data);
+            });
+
+
+
           }
         })
       }

@@ -17,7 +17,9 @@ Page({
     loadingShow: false,
     pageNum: 0,
     pageCount: 20,
-    hotTopic_id:null
+    hotTopic_id:null,
+    name: "暂无数据",
+    content1:"暂无数据"
   },
   onLoad: function (options) {
     var self = this;
@@ -35,6 +37,10 @@ Page({
         self.setData({ pageNum: self.data.pageNum + 1 });
         var images = [];
         res.data.result.forEach(function (item) {
+          self.setData({ 
+            name: item.name,
+            content1:item.content1
+             });
           images.push({
             pic: item.img_s,
             title: item.title,

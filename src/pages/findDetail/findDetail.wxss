@@ -1,4 +1,5 @@
 /* pages/findDetail/findDetail.wxss */
+
 .img_item {
   width: 46%;
   display: inline-block;
@@ -88,3 +89,18 @@
   }
 }
 
+.content {
+  font-size: 24rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  margin-top: 5rpx;
+  text-align: left;
+  color: #7c7c7c;
+   display: -webkit-box;
+  line-height: 40rpx;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

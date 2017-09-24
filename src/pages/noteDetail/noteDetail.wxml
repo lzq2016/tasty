@@ -26,6 +26,6 @@
 <scroll-view scroll-y="true" style="width: 100%;margin-top:20rpx;">
     <image style='width:47%;margin-left:2%;' mode="widthFix" src='{{item}}' wx:for="{{img_url}}"></image>
 </scroll-view>
-<view style='background-color:#FD5050;width:100%;text-align:center;height:97rpx;line-height:97rpx;position:fixed;bottom:0'>
+<view style='background-color:#FD5050;width:100%;text-align:center;height:97rpx;line-height:97rpx;position:fixed;bottom:0' bindtap="shoucang">
 <text style='font-size:34rpx;color:#fff'>收藏</text>
 </view>

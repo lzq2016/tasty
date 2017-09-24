@@ -1,7 +1,7 @@
 <!--pages/findDetail/findDetail.wxml-->
 <view style='display:flex;flex-direction:column;align-items:center;'>
-<text style='font-size:28rpx;margin-top:20rpx;margin-bottom:20rpx;'>{{title}}</text>
-<text style='font-size:28rpx;color:#BEBEBE;'>{{content}}</text>
+<text style='font-size:28rpx;margin-top:20rpx;margin-bottom:20rpx;'>{{name}}</text>
+<text style='font-size:28rpx;color:#BEBEBE;'>{{content1}}</text>
 </view>
 <view style="display:none">
   <image wx:for="{{images}}" wx:key="id" id="{{item.id}}" src="{{item.pic}}" bindload="onImageLoad"></image>
@@ -14,7 +14,7 @@
         <!-- <text style='font-size:24rpx;font-weight:bold;display:block;margin-top:5rpx;'>MY LAB分子甜品实验室</text> -->
         <text style='font-size:24rpx;font-weight:bold;display:block;margin-top:5rpx;'>{{item.title}}</text>
         <!-- <text style='font-size:24rpx;display:block;padding-left:20rpx;padding-right:20rpx;margin-top:5rpx;text-align:left;color:#7C7C7C'>图一忘了是什么了。。。是店员推荐的融化的不慢了</text> -->
-        <text style='font-size:24rpx;display:block;padding-left:20rpx;padding-right:20rpx;margin-top:5rpx;text-align:left;color:#7C7C7C;' class='content'>{{item.content}}</text>
+        <text class='content'>{{item.content}}</text>
         <view style='display: flex;flex-flow: row;justify-content:space-between;align-items:center;padding-left:20rpx;padding-right:20rpx;margin-top:5rpx;margin-bottom:5rpx;'>
           <view style='vertical-align:middle;'>
             <view style='width:56rpx;height:56rpx;display:inline-block;border-radius:50%;border:1rpx solid #C5156A;padding:2rpx;vertical-align:middle;'>
@@ -35,7 +35,7 @@
         <!-- <text style='font-size:24rpx;font-weight:bold;display:block;margin-top:5rpx;'>MY LAB分子甜品实验室</text> -->
         <text style='font-size:24rpx;font-weight:bold;display:block;margin-top:5rpx;'>{{item.title}}</text>        
         <!-- <text style='font-size:24rpx;display:block;padding-left:20rpx;padding-right:20rpx;margin-top:5rpx;text-align:left;color:#7C7C7C'>图一忘了是什么了。。。是店员推荐的融化的不慢了</text> -->
-        <text style='font-size:24rpx;display:block;padding-left:20rpx;padding-right:20rpx;margin-top:5rpx;text-align:left;color:#7C7C7C'>{{item.content}}</text>
+        <text class='content'>{{item.content}}</text>
         <view style='display: flex;flex-flow: row;justify-content:space-between;align-items:center;padding-left:20rpx;padding-right:20rpx;margin-top:5rpx;margin-bottom:20rpx;'>
           <view style='vertical-align:middle;'>
             <view style='width:56rpx;height:56rpx;display:inline-block;border-radius:50%;border:1rpx solid #C5156A;padding:2rpx;vertical-align:middle;'>

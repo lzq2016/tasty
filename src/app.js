@@ -22,6 +22,7 @@ App({
                             wx.login({
                                 success: res => {
                                     // 发送 res.code 到后台换取 openId, sessionKey, unionId
+                                    console.log(res,"wx.login")
                                     if (res.code) {
                                         wx.request({
                                             url: 'https://api.weixin.qq.com/sns/jscode2session',

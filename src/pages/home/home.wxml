@@ -21,7 +21,7 @@
         <!-- <text style='font-size:24rpx;font-weight:bold;display:block;margin-top:5rpx;'>MY LAB分子甜品实验室</text> -->
         <text style='font-size:24rpx;font-weight:bold;display:block;margin-top:5rpx;'>{{item.title}}</text>
         <!-- <text style='font-size:24rpx;display:block;padding-left:20rpx;padding-right:20rpx;margin-top:5rpx;text-align:left;color:#7C7C7C'>图一忘了是什么了。。。是店员推荐的融化的不慢了</text> -->
-        <text style='font-size:24rpx;display:block;padding-left:20rpx;padding-right:20rpx;margin-top:5rpx;text-align:left;color:#7C7C7C;' class='content'>{{item.content}}</text>
+        <text style='' class='content'>{{item.content}}</text>
         <view style='display: flex;flex-flow: row;justify-content:space-between;align-items:center;padding-left:20rpx;padding-right:20rpx;margin-top:5rpx;margin-bottom:5rpx;'>
           <view style='vertical-align:middle;'>
             <view style='width:56rpx;height:56rpx;display:inline-block;border-radius:50%;border:1rpx solid #C5156A;padding:2rpx;vertical-align:middle;'>
@@ -40,17 +40,17 @@
       <navigator url="/pages/noteDetail/noteDetail?note_id={{item.note_id}}&areaid={{adcode}}" hover-class="none" wx:for="{{col2}}" wx:key="id" style='background-color:#fff;margin-bottom:15rpx;border:1rpx solid #DFDFDF'>
         <image src="{{item.pic}}" style="width:100%;height:{{item.height}}px"></image>
         <!-- <text style='font-size:24rpx;font-weight:bold;display:block;margin-top:5rpx;'>MY LAB分子甜品实验室</text> -->
-        <text style='font-size:24rpx;font-weight:bold;display:block;margin-top:5rpx;'>{{item.title}}</text>        
+        <text style='font-size:24rpx;font-weight:bold;display:block;margin-top:5rpx;'>{{item.title}}</text>
         <!-- <text style='font-size:24rpx;display:block;padding-left:20rpx;padding-right:20rpx;margin-top:5rpx;text-align:left;color:#7C7C7C'>图一忘了是什么了。。。是店员推荐的融化的不慢了</text> -->
-        <text style='font-size:24rpx;display:block;padding-left:20rpx;padding-right:20rpx;margin-top:5rpx;text-align:left;color:#7C7C7C'>{{item.content}}</text>
+        <text class='content'>{{item.content}}</text>
         <view style='display: flex;flex-flow: row;justify-content:space-between;align-items:center;padding-left:20rpx;padding-right:20rpx;margin-top:5rpx;margin-bottom:20rpx;'>
           <view style='vertical-align:middle;'>
             <view style='width:56rpx;height:56rpx;display:inline-block;border-radius:50%;border:1rpx solid #C5156A;padding:2rpx;vertical-align:middle;'>
               <!-- <image src="/imagesDemo/1.png" style='width:56rpx;height:56rpx;border-radius:50%;'></image> -->
-              <image src="{{item.headPortrait}}" style='width:56rpx;height:56rpx;border-radius:50%;'></image>              
+              <image src="{{item.headPortrait}}" style='width:56rpx;height:56rpx;border-radius:50%;'></image>
             </view>
             <!-- <text style='font-size:24rpx;vertical-align:middle;'>一个诚意</text> -->
-            <text style='font-size:24rpx;vertical-align:middle;'>{{item.nickname}}</text>            
+            <text style='font-size:24rpx;vertical-align:middle;'>{{item.nickname}}</text>
           </view>
           <!-- <text style='font-size:24rpx;vertical-align:middle;color:#ACACAC'>7</text> -->
           <text style='font-size:24rpx;vertical-align:middle;color:#ACACAC'>{{item.count}}</text>
@@ -60,8 +60,14 @@
     </view>
   </view>
 </scroll-view>
-<view class="loading_box" wx:if="loadingShow">
+<!-- <view class="loading_box" wx:if="loadingShow">
   <view class="loading3 loading3_1"></view>
   <view class="loading3 loading3_2"></view>
   <view class="loading3 loading3_3"></view>
+</view> -->
+<view class='loadingWrap' wx:if="loadingShow">
+  <view class="weui-loadmore">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
 </view>
