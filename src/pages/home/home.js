@@ -235,11 +235,11 @@ Page({
       success: function (res) {
         self.setData({ pageNum: self.data.pageNum + 1 });
         var images = [];
-        // if (types != 1) {
-        //   self.data.preImage.forEach(function (item) {
-        //     images.push(item);
-        //   });
-        // }
+        if (types != 1) {
+          self.data.preImage.forEach(function (item) {
+            images.push(item);
+          });
+        }
         res.data.result.notes.forEach(function (item) {
           images.push({
             pic: item.img_s,
@@ -251,8 +251,7 @@ Page({
             height: 0
           });
         });
-        // self.setData({ preImage: images });
-        self.setData({ preImage: [] });
+        self.setData({ preImage: images });
         wx.getSystemInfo({
           success: (res) => {
             let ww = res.windowWidth;
