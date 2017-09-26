@@ -20,7 +20,9 @@ Page({
     collect_count: null,
     praise_count: null,
     img_url: [],
-    address: null
+    address: null,
+    imgWidth:200,
+    imgHeight:200
   },
 
   /**
@@ -31,6 +33,16 @@ Page({
     var self = this;
     self.setData({
       note_id: options.note_id
+    })
+    wx.getSystemInfo({
+      success: (res) => {
+        console.log(res.windowWidth,"页面宽度")
+        console.log(res.windowHeight,"页面高度")
+        self.setData({
+          imgWidth: (res.windowWidth-10)/3 + "px",
+          imgHeight: res.windowHeight*0.25 + "px"
+        });
+      }
     })
     wx.request({
       url: 'https://www.sharetasty.com:8443/client/NewCommunityService/searchNoteMsgById4',

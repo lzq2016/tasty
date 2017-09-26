@@ -10,7 +10,9 @@ Page({
     data: {
         userInfo: "",
         user:{},
-        collect_notes:[]
+        collect_notes:[],
+        imgWidth: 200,
+        imgHeight: 200
     },
 
     /**
@@ -21,6 +23,16 @@ Page({
         // self.userInfo = app.globalData.userInfo;
         // this.setData({ userInfo: app.globalData.userInfo });
         // console.log(self.userInfo);
+        wx.getSystemInfo({
+          success: (res) => {
+            console.log(res.windowWidth, "页面宽度")
+            console.log(res.windowHeight, "页面高度")
+            self.setData({
+              imgWidth: (res.windowWidth - 10) / 3 + "px",
+              imgHeight: res.windowHeight * 0.25 + "px"
+            });
+          }
+        })
         wx.request({
             url: 'https://www.sharetasty.com:8443/client/UserService/searchUserById',
             data: {

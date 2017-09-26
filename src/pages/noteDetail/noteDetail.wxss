@@ -1,1 +1,4 @@
 /* pages/noteDetail/noteDetail.wxss */
+.img-mr{
+  margin-right:5px;
+}

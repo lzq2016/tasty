@@ -40,7 +40,8 @@ Page({
         token: app.globalData.token,
         pageNum: self.data.pageNum,
         pageCount: self.data.pageCount,
-        areaid: self.data.areaid
+        areaid: self.data.areaid,
+        isFuzz:1
       },
       success: function (res) {
         console.log(res,"搜索接口")
