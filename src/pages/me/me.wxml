@@ -41,10 +41,11 @@
 </view>
 <view style='width:100%;'>
   <view>
-    <image style='width:32%;margin-right:2%' mode="widthFix" src='http://lzqrebate.oss-cn-beijing.aliyuncs.com/me1.png'></image>
+    <image class="{{index%3==0?'img':'img-mr'}}" mode="widthFix" wx:for="{{collect_notes}}" src="{{item.img_s}}"></image>
+    <!-- <image style='width:32%;margin-right:2%' mode="widthFix" src='http://lzqrebate.oss-cn-beijing.aliyuncs.com/me1.png'></image>
     <image style='width:32%;margin-right:2%' mode="widthFix" src='http://lzqrebate.oss-cn-beijing.aliyuncs.com/me2.png'></image>
-    <image style='width:32%;' mode="widthFix" src='http://lzqrebate.oss-cn-beijing.aliyuncs.com/me3.png'></image>
+    <image style='width:32%;' mode="widthFix" src='http://lzqrebate.oss-cn-beijing.aliyuncs.com/me3.png'></image> -->
   </view>
-  <!-- <image  wx:for="{{collect_notes}}" src="{{item.img_s}}" style='width:33%;height:244rpx;' mode="scaleToFill"></image> -->
+   <!-- <image  wx:for="{{collect_notes}}" src="{{item.img_s}}" style='width:33%;height:244rpx;' mode="scaleToFill"></image>  -->
 
 </view>
