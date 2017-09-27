@@ -1,6 +1,13 @@
 <!--pages/noteDetail/noteDetail.wxml-->
-<!-- <image style="width: 100%;" mode="widthFix" src="http://lzqrebate.oss-cn-beijing.aliyuncs.com/noteDetai.png"></image> -->
-<image style="width: 100%;" mode="widthFix" src="{{img_s}}"></image>
+<!-- <image style="width: 100%;" mode="widthFix" src="{{img_s}}"></image> -->
+<swiper indicator-dots="true"
+  autoplay="{{autoplay}}" interval="3000" duration="500" style='width:{{titleImgWidth}};height:{{titleImgHeight}}'>
+  <block wx:for="{{img_url}}">
+    <swiper-item style="width:{{titleImgWidth}};height:{{titleImgHeight}}">
+      <image src="{{item}}" class="slide-image" style="width:{{titleImgWidth}};height:{{titleImgHeight}}" mode='aspectFill'/>
+    </swiper-item>
+  </block>
+</swiper>
 <view style='display: flex;flex-flow: row;justify-content:space-between;align-items:center;padding:20rpx 20rpx;'>
   <view>
     <!-- <image style='width:66rpx;height:66rpx;border-radius:50%;vertical-align:middle' src='/imagesDemo/1.png'></image> -->
@@ -10,10 +17,10 @@
   <text style='font-size:23rpx;color:#F85B6E;border:1rpx solid #F85B6E;width:145rpx;height:50rpx;background-color:#fff;line-height:50rpx;text-align:center;border-radius:10rpx;'> 关注 </text>
 </view>
 <view style='padding:20rpx 20rpx;'>
-  <text style='font-size:29rpx;font-weight:bold;display:block;margin-bottom:20rpx;'>{{title}}</text>
+  <text style='font-size:32rpx;font-weight:bold;display:block;margin-bottom:20rpx;'>{{title}}</text>
   <!-- <text style='font-size:24rpx;color:#757575;line-height:26rpx;'>一进去就听到‘’董小姐，你熄灭......“ 灯光昏暗，非常适合没有话题可聊的情侣，或者朋友在一起（音乐 够大声） 环境挺不错的，当初还以为是地铺为主，或者靠外的独立铺位，谁 知道会在mall里面，而且没有对外的窗口哦 菜品以川菜为主，非常的辣啊！！ 鸡丝凉面很辣！味道不错，中规中矩的类型 烤土豆挺香的，带点老干妈的味道~ 尖椒小炒肉，也是各种辣，味道中规中矩 吃环境为主，聚会也ok 听说很多明星来过这家餐厅唱歌 李琦什么的 我这次就吧不推荐啦啦。。。。。 地址：深圳南山科技金融大厦（真的在里面啊）
   </text> -->
-  <text style='font-size:24rpx;color:#757575;line-height:26rpx;'>{{content}}</text>
+  <text style='font-size:24rpx;color:#757575;line-height:29rpx;'>{{content}}</text>
 </view>
 <view style='font-size:24rpx;color:#C8C8C8;display: flex;flex-flow: row;justify-content:space-between;align-items:center;padding:0 20rpx;'>
   <text> 阅读 {{look_count}}</text>

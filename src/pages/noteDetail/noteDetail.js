@@ -22,7 +22,10 @@ Page({
     img_url: [],
     address: null,
     imgWidth:200,
-    imgHeight:200
+    imgHeight:200,
+    titleImgWidth:200,
+    titleImgHeight:200,
+    autoplay:false
   },
 
   /**
@@ -40,7 +43,9 @@ Page({
         console.log(res.windowHeight,"页面高度")
         self.setData({
           imgWidth: (res.windowWidth-10)/3 + "px",
-          imgHeight: res.windowHeight*0.25 + "px"
+          imgHeight: res.windowHeight*0.25 + "px",
+          titleImgHeight: res.windowHeight * 0.4 + "px",
+          titleImgWidth: res.windowWidth + "px"
         });
       }
     })
