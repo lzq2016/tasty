@@ -34,7 +34,7 @@ Page({
       inputVal: e.detail.value
     });
     wx.request({
-      url: 'https://www.sharetasty.com:8443/client/NewCommunityService/searchNotesByKeyword3',
+      url: 'https://www.sharetasty.com/client/NewCommunityService/searchNotesByKeyword3',
       data: {
         type: 0,
         token: app.globalData.token,

@@ -34,7 +34,7 @@ Page({
           }
         })
         wx.request({
-            url: 'https://www.sharetasty.com:8443/client/UserService/searchUserById',
+            url: 'https://www.sharetasty.com/client/UserService/searchUserById',
             data: {
                 token: app.globalData.token,
                 user_id: app.globalData.id,

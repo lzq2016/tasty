@@ -38,7 +38,7 @@ App({
                                                 self.globalData.openId = res.data.openid;
                                                 self.globalData.unionid = res.data.unionid;
                                                 wx.request({
-                                                    url: 'https://www.sharetasty.com:8443/client/UserService/userLoginByOther4',
+                                                    url: 'https://www.sharetasty.com/client/UserService/userLoginByOther4',
                                                     data: {
                                                         type: "weixing",
                                                         otherId: self.globalData.openId + "," + self.globalData.unionid,

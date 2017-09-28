@@ -25,7 +25,7 @@ Page({
     var self = this;
     self.setData({ hotTopic_id: options.hotTopic_id});
     wx.request({
-      url: 'https://www.sharetasty.com:8443/client/CommunityService/searchHotTopicNotes',
+      url: 'https://www.sharetasty.com/client/CommunityService/searchHotTopicNotes',
       data: {
         token: app.globalData.token,
         pageNum: self.data.pageNum,
@@ -164,7 +164,7 @@ Page({
     console.log(8888888888)
     var self = this;
     wx.request({
-      url: 'https://www.sharetasty.com:8443/client/CommunityService/searchHotTopicNotes',
+      url: 'https://www.sharetasty.com/client/CommunityService/searchHotTopicNotes',
       data: {
         token: app.globalData.token,
         pageNum: self.data.pageNum,

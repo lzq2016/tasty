@@ -50,7 +50,7 @@ Page({
       }
     })
     wx.request({
-      url: 'https://www.sharetasty.com:8443/client/NewCommunityService/searchNoteMsgById4',
+      url: 'https://www.sharetasty.com/client/NewCommunityService/searchNoteMsgById4',
       data: {
         note_id: self.data.note_id,
         token: app.globalData.token,
@@ -78,7 +78,7 @@ Page({
   shoucang: function (e) {
     var self = this;
     wx.request({
-      url: 'https://www.sharetasty.com:8443/client/CommunityService/collectNote',
+      url: 'https://www.sharetasty.com/client/CommunityService/collectNote',
       data: {
         note_id: self.data.note_id,
         token: app.globalData.token,

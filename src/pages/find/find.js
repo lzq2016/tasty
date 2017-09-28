@@ -12,7 +12,7 @@ Page({
     onLoad: function () {
         var self = this;
         wx.request({
-            url: 'https://www.sharetasty.com:8443/client/CommunityService/searchHotTopic',
+            url: 'https://www.sharetasty.com/client/CommunityService/searchHotTopic',
             data: {
                 pageNum: 0,
                 pageCount: 10

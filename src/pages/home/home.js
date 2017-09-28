@@ -84,7 +84,7 @@ Page({
                 console.log(self.data.selectCity, "选择的城市");
                 // self.globalData.token = res.data.result.ad_info.adcode; 
                 wx.request({
-                  url: 'https://www.sharetasty.com:8443/client/NewCommunityService/searchNotesIndex3',
+                  url: 'https://www.sharetasty.com/client/NewCommunityService/searchNotesIndex3',
                   data: {
                     type: 1,
                     token: app.globalData.token,
@@ -383,7 +383,7 @@ Page({
   },
   continueLoading: function (self, types) {
     wx.request({
-      url: 'https://www.sharetasty.com:8443/client/NewCommunityService/searchNotesIndex3',
+      url: 'https://www.sharetasty.com/client/NewCommunityService/searchNotesIndex3',
       data: {
         type: 1,
         token: app.globalData.token,
