@@ -5,8 +5,6 @@
     "pages/find/find",
     "pages/search/search",
     "pages/me/me",
-    "pages/selectCity/selectCity",
-    "pages/location/location",
     "pages/noteDetail/noteDetail"
   ],
   "window":{

@@ -41,6 +41,8 @@
 </view>
 <view style='width:100%;'>
   <view>
-    <image style='width:{{imgWidth}};height:{{imgHeight}};' class="{{(index+1)%3==0?'img':'img-mr'}}" mode="aspectFill" wx:for="{{collect_notes}}" src="{{item.img_s}}"></image>
+    <navigator url="/pages/noteDetail/noteDetail?note_id={{item.id}}&areaid={{item.areaid}}" hover-class="none" wx:for="{{collect_notes}}" style='display:inline;' class="{{(index+1)%3==0?'img':'img-mr'}}">
+      <image style='width:{{imgWidth}};height:{{imgHeight}};' mode="aspectFill" src="{{item.img_s}}"></image>
+    </navigator>
   </view>
 </view>
