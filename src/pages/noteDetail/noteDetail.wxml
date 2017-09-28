@@ -11,10 +11,10 @@
 <view style='display: flex;flex-flow: row;justify-content:space-between;align-items:center;padding:20rpx 20rpx;'>
   <view>
     <!-- <image style='width:66rpx;height:66rpx;border-radius:50%;vertical-align:middle' src='/imagesDemo/1.png'></image> -->
-    <image style='width:66rpx;height:66rpx;border-radius:50%;vertical-align:middle' src='{{headPortrait}}'></image>
+    <image style='width:66rpx;height:66rpx;borderadius:50%;vertical-align:middle' src='{{headPortrait}}'></image>
     <text style='font-size:26rpx;color:#413F3F;vertical-align:middle;margin-left:15rpx;'>{{nickname}}</text>
   </view>
-  <text style='font-size:23rpx;color:#F85B6E;border:1rpx solid #F85B6E;width:145rpx;height:50rpx;background-color:#fff;line-height:50rpx;text-align:center;border-radius:10rpx;'> 关注 </text>
+  <text style='font-size:23rpx;color:#F85B6E;border:1rpx solid #F85B6E;width:145rpx;height:50rpx;background-color:#fff;line-height:52rpx;text-align:center;border-radius:10rpx;'> 关注 </text>
 </view>
 <view style='padding:20rpx 20rpx;'>
   <text style='font-size:32rpx;font-weight:bold;display:block;margin-bottom:20rpx;'>{{title}}</text>
