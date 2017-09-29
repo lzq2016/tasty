@@ -93,7 +93,7 @@
   font-size: 24rpx;
   padding-left: 20rpx;
   padding-right: 20rpx;
-  margin-top: 5rpx;
+  margin-top: 8rpx;
   text-align: left;
   color: #7c7c7c;
    display: -webkit-box;

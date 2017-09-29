@@ -7,8 +7,8 @@
         <image style="width: 13rpx; height: 20rpx;margin-right:20rpx;" src="../../images/arrowRight.png"></image>
       </navigator>
     </view>
-    <scroll-view scroll-x="true" style="white-space: nowrap;border-bottom:1rpx solid #EEEEEE;padding-bottom:20rpx;">
-      <image style="width: 260rpx; height: 200rpx;margin-right:20rpx;" wx:for="{{items.notes}}" wx:for-item="item" src="{{item.img_s}}"></image>
+    <scroll-view scroll-x="true" style="white-space: nowrap;border-bottom:1rpx solid #EEEEEE;padding-bottom:20rpx;height:110px;">
+      <image style="width: 260rpx; height: 200rpx;margin-right:20rpx;" wx:for="{{items.notes}}" wx:for-item="item" src="{{item.img_s}}" mode="aspectFill"></image>
     </scroll-view>
   </view>
 </view>

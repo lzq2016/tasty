@@ -12,10 +12,10 @@
       <navigator hover-class="none" wx:for="{{col1}}" wx:key="id" style='background-color:#fff;margin-bottom:15rpx;border:1rpx solid #DFDFDF;border-radius:15rpx;'>
         <image src="{{item.pic}}" style="width:100%;height:{{item.height}}px;border-top-left-radius:15rpx;border-top-right-radius:15rpx;"></image>
         <!-- <text style='font-size:24rpx;font-weight:bold;display:block;margin-top:5rpx;'>MY LAB分子甜品实验室</text> -->
-        <text style='font-size:24rpx;font-weight:bold;display:block;margin-top:5rpx;'>{{item.title}}</text>
+        <text style='font-size:24rpx;font-weight:bold;display:block;margin-top:8rpx;margin-left:20rpx;text-align:left;'>{{item.title}}</text>
         <!-- <text style='font-size:24rpx;display:block;padding-left:20rpx;padding-right:20rpx;margin-top:5rpx;text-align:left;color:#7C7C7C'>图一忘了是什么了。。。是店员推荐的融化的不慢了</text> -->
         <text class='content'>{{item.content}}</text>
-        <view style='display: flex;flex-flow: row;justify-content:space-between;align-items:center;padding-left:20rpx;padding-right:20rpx;margin-top:5rpx;margin-bottom:5rpx;'>
+        <view style='display: flex;flex-flow: row;justify-content:space-between;align-items:center;padding-left:20rpx;padding-right:20rpx;margin-top:10rpx;margin-bottom:10rpx;'>
           <view style='vertical-align:middle;'>
             <view style='width:56rpx;height:56rpx;display:inline-block;border-radius:50%;border:1rpx solid #C5156A;padding:2rpx;vertical-align:middle;'>
               <!-- <image src="/imagesDemo/1.png" style='width:56rpx;height:56rpx;border-radius:50%;'></image> -->
@@ -33,10 +33,10 @@
       <navigator hover-class="none" wx:for="{{col2}}" wx:key="id" style='background-color:#fff;margin-bottom:15rpx;border:1rpx solid #DFDFDF;border-radius:15rpx;'>
         <image src="{{item.pic}}" style="width:100%;height:{{item.height}}px;border-top-left-radius:15rpx;border-top-right-radius:15rpx;"></image>
         <!-- <text style='font-size:24rpx;font-weight:bold;display:block;margin-top:5rpx;'>MY LAB分子甜品实验室</text> -->
-        <text style='font-size:24rpx;font-weight:bold;display:block;margin-top:5rpx;'>{{item.title}}</text>        
+        <text style='font-size:24rpx;font-weight:bold;display:block;margin-top:8rpx;margin-left:20rpx;text-align:left;'>{{item.title}}</text>        
         <!-- <text style='font-size:24rpx;display:block;padding-left:20rpx;padding-right:20rpx;margin-top:5rpx;text-align:left;color:#7C7C7C'>图一忘了是什么了。。。是店员推荐的融化的不慢了</text> -->
         <text class='content'>{{item.content}}</text>
-        <view style='display: flex;flex-flow: row;justify-content:space-between;align-items:center;padding-left:20rpx;padding-right:20rpx;margin-top:5rpx;margin-bottom:20rpx;'>
+        <view style='display: flex;flex-flow: row;justify-content:space-between;align-items:center;padding-left:20rpx;padding-right:20rpx;margin-top:10rpx;margin-bottom:10rpx;'>
           <view style='vertical-align:middle;'>
             <view style='width:56rpx;height:56rpx;display:inline-block;border-radius:50%;border:1rpx solid #C5156A;padding:2rpx;vertical-align:middle;'>
               <!-- <image src="/imagesDemo/1.png" style='width:56rpx;height:56rpx;border-radius:50%;'></image> -->

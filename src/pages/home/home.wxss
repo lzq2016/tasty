@@ -101,13 +101,13 @@
   font-size: 24rpx;
   padding-left: 20rpx;
   padding-right: 20rpx;
-  margin-top: 5rpx;
+  margin-top: 8rpx;
   text-align: left;
   color: #7c7c7c;
 }
 
 .loadingWrap {
-  background-color: #f2f2f2;
+  background-color: #f4f5f7;
   padding: 1.5em 0;
 }
 

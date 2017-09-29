@@ -1,4 +1,4 @@
-<view style='height:88rpx;background-color:#f5f8fa;display: flex;flex-flow: row;justify-content:start;align-items:center;padding-left:30rpx;'>
+<view style='height:88rpx;background-color:#f4f5f7;display: flex;flex-flow: row;justify-content:start;align-items:center;padding-left:30rpx;'>
   <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key="{{'name'}}">
     <view style='background-color:#D2D0D0;width:220rpx;height:55rpx;line-height:55rpx;border-radius:30rpx;text-align:center;'>
       <image src="/images/dizhi.png" style="width:22rpx;height:28rpx;vertical-align:middle;"></image>
@@ -13,16 +13,16 @@
 <view style="display:none">
   <image wx:for="{{images}}" wx:key="id" id="{{item.id}}" src="{{item.pic}}" bindload="onImageLoad"></image>
 </view>
-<scroll-view scroll-y="true" style="height:{{scrollH}}px" bindscrolltolower="loading" style='background-color:#F2F2F2;padding-top:10rpx;'>
+<scroll-view scroll-y="true" style="height:{{scrollH}}px" bindscrolltolower="loading" style='background-color:#f4f5f7;padding-top:10rpx;'>
   <view style="display: flex;flex-flow: row;justify-content:center">
     <view class="img_item" style='margin-right:15rpx;text-align:center;'>
       <navigator url="/pages/noteDetail/noteDetail?note_id={{item.note_id}}&areaid={{adcode}}" hover-class="none" wx:for="{{col1}}" wx:key="id" style='background-color:#fff;margin-bottom:15rpx;border:1rpx solid #DFDFDF;border-radius:15rpx;'>
         <image src="{{item.pic}}" style="width:100%;height:{{item.height}}px;border-top-left-radius:15rpx;border-top-right-radius:15rpx;"></image>
         <!-- <text style='font-size:24rpx;font-weight:bold;display:block;margin-top:5rpx;'>MY LAB分子甜品实验室</text> -->
-        <text style='font-size:24rpx;font-weight:bold;display:block;margin-top:5rpx;'>{{item.title}}</text>
+        <text style='font-size:24rpx;font-weight:bold;display:block;margin-top:8rpx;text-align:left;padding-left:20rpx;'>{{item.title}}</text>
         <!-- <text style='font-size:24rpx;display:block;padding-left:20rpx;padding-right:20rpx;margin-top:5rpx;text-align:left;color:#7C7C7C'>图一忘了是什么了。。。是店员推荐的融化的不慢了</text> -->
         <text style='' class='content'>{{item.content}}</text>
-        <view style='display: flex;flex-flow: row;justify-content:space-between;align-items:center;padding-left:20rpx;padding-right:20rpx;margin-top:5rpx;margin-bottom:5rpx;'>
+        <view style='display: flex;flex-flow: row;justify-content:space-between;align-items:center;padding-left:20rpx;padding-right:20rpx;margin-top:10rpx;margin-bottom:10rpx;'>
           <view style='vertical-align:middle;'>
             <view style='width:56rpx;height:56rpx;display:inline-block;border-radius:50%;border:1rpx solid #C5156A;padding:2rpx;vertical-align:middle;'>
               <!-- <image src="/imagesDemo/1.png" style='width:56rpx;height:56rpx;border-radius:50%;'></image> -->
@@ -40,10 +40,10 @@
       <navigator url="/pages/noteDetail/noteDetail?note_id={{item.note_id}}&areaid={{adcode}}" hover-class="none" wx:for="{{col2}}" wx:key="id" style='background-color:#fff;margin-bottom:15rpx;border:1rpx solid #DFDFDF;border-radius:15rpx;'>
         <image src="{{item.pic}}" style="width:100%;height:{{item.height}}px;border-top-left-radius:15rpx;border-top-right-radius:15rpx;"></image>
         <!-- <text style='font-size:24rpx;font-weight:bold;display:block;margin-top:5rpx;'>MY LAB分子甜品实验室</text> -->
-        <text style='font-size:24rpx;font-weight:bold;display:block;margin-top:5rpx;'>{{item.title}}</text>
+        <text style='font-size:24rpx;font-weight:bold;display:block;margin-top:8rpx;text-align:left;margin-left:20rpx;'>{{item.title}}</text>
         <!-- <text style='font-size:24rpx;display:block;padding-left:20rpx;padding-right:20rpx;margin-top:5rpx;text-align:left;color:#7C7C7C'>图一忘了是什么了。。。是店员推荐的融化的不慢了</text> -->
         <text class='content'>{{item.content}}</text>
-        <view style='display: flex;flex-flow: row;justify-content:space-between;align-items:center;padding-left:20rpx;padding-right:20rpx;margin-top:5rpx;margin-bottom:20rpx;'>
+        <view style='display: flex;flex-flow: row;justify-content:space-between;align-items:center;padding-left:20rpx;padding-right:20rpx;margin-top:10rpx;margin-bottom:10rpx;'>
           <view style='vertical-align:middle;'>
             <view style='width:56rpx;height:56rpx;display:inline-block;border-radius:50%;border:1rpx solid #C5156A;padding:2rpx;vertical-align:middle;'>
               <!-- <image src="/imagesDemo/1.png" style='width:56rpx;height:56rpx;border-radius:50%;'></image> -->

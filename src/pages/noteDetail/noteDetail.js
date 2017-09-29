@@ -25,7 +25,8 @@ Page({
     imgHeight:200,
     titleImgWidth:200,
     titleImgHeight:200,
-    autoplay:false
+    autoplay:false,
+    shoucangImg:"/images/shoucang.png"
   },
 
   /**
@@ -87,6 +88,7 @@ Page({
       success: function (res) {
         console.log(res, "shoucang");
         if (res.data.resultstate == 1) {
+          self.setData({ shoucangImg:"/images/shoucangSelect.png"});
           wx.showToast({
             title: '收藏成功',
             icon: 'success',

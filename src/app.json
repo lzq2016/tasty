@@ -12,12 +12,13 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "test1",
     "navigationBarTextStyle":"black",
-    "backgroundColor":"#000000"
+    "backgroundColor":"#ffffff"
   },
   "tabBar": {
     "color": "#D5D5D5",
     "selectedColor":"#000000",
     "backgroundColor":"#ffffff",
+    "borderStyle":"white",
     "list": [
       {
         "pagePath": "pages/home/home",
