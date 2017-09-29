@@ -1,4 +1,4 @@
-<view style='height:88rpx;background-color:#f5f8fa;display: flex;flex-flow: row;justify-content:start;align-items:center;margin-left:30rpx;'>
+<view style='height:88rpx;background-color:#f5f8fa;display: flex;flex-flow: row;justify-content:start;align-items:center;padding-left:30rpx;'>
   <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key="{{'name'}}">
     <view style='background-color:#D2D0D0;width:220rpx;height:55rpx;line-height:55rpx;border-radius:30rpx;text-align:center;'>
       <image src="/images/dizhi.png" style="width:22rpx;height:28rpx;vertical-align:middle;"></image>

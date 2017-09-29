@@ -127,10 +127,19 @@ Page({
                         self.loadImages();
                       }
                     })
+                  },
+                  fail: function (res) {
+                      console.log(res,"接口错误")
                   }
                 })
+              },
+              fail: function (res) {
+                  console.log(res, "获取腾讯地址失败信息");
               }
             })
+          },
+          fail: function (res) {
+              console.log(res,"获取经纬度接口失败信息");
           }
         })
       }
