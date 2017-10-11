@@ -26,13 +26,69 @@
   <text> 阅读 {{look_count}}</text>
   <text> 收藏 {{collect_count}} 赞 {{praise_count}}</text>
 </view>
-<view style='padding-left:20rpx;padding-top:20rpx;padding-bottom:110rpx;'>
+<view style='padding-left:20rpx;padding-top:20rpx;'>
   <image style='width:23rpx;height:34rpx;vertical-align:middle' src='/images/location.png'></image>
   <text style='font-size:24rpx;color:#C8C8C8;vertical-align:middle;margin-left:15rpx;'>{{address}}</text>
 </view>
 <!-- <scroll-view scroll-y="true" style="width: 100%;margin-top:20rpx;margin-bottom:102rpx;">
     <image style='width:{{imgWidth}};height:{{imgHeight}};' class="{{(index+1)%3==0?'img':'img-mr'}}" mode="aspectFill" src='{{item}}' wx:for="{{img_url}}"></image>
 </scroll-view> -->
+<view style="display:none">
+  <image wx:for="{{images}}" wx:key="id" id="{{item.id}}" src="{{item.pic}}" bindload="onImageLoad"></image>
+</view>
+<scroll-view scroll-y="true" style="height:{{scrollH}}px" bindscrolltolower="loading" style='background-color:#f4f5f7;padding-top:10rpx;padding-bottom:110rpx;'>
+  <view style="display: flex;flex-flow: row;justify-content:center">
+    <view class="img_item" style='margin-right:15rpx;text-align:center;'>
+      <navigator url="/pages/noteDetail/noteDetail?note_id={{item.note_id}}&areaid={{adcode}}" hover-class="none" open-type="redirect" wx:for="{{col1}}" wx:key="id" style='background-color:#fff;margin-bottom:15rpx;border:1rpx solid #DFDFDF;border-radius:15rpx;'>
+        <image src="{{item.pic}}" style="width:100%;height:{{item.height}}px;border-top-left-radius:15rpx;border-top-right-radius:15rpx;"></image>
+        <!-- <text style='font-size:24rpx;font-weight:bold;display:block;margin-top:5rpx;'>MY LAB分子甜品实验室</text> -->
+        <text style='font-size:24rpx;font-weight:bold;display:block;margin-top:8rpx;text-align:left;padding-left:20rpx;'>{{item.title}}</text>
+        <!-- <text style='font-size:24rpx;display:block;padding-left:20rpx;padding-right:20rpx;margin-top:5rpx;text-align:left;color:#7C7C7C'>图一忘了是什么了。。。是店员推荐的融化的不慢了</text> -->
+        <text style='' class='content'>{{item.content}}</text>
+        <view style='display: flex;flex-flow: row;justify-content:space-between;align-items:center;padding-left:20rpx;padding-right:20rpx;margin-top:10rpx;margin-bottom:10rpx;'>
+          <view style='vertical-align:middle;'>
+            <view style='width:56rpx;height:56rpx;display:inline-block;border-radius:50%;border:1rpx solid #C5156A;padding:2rpx;vertical-align:middle;'>
+              <!-- <image src="/imagesDemo/1.png" style='width:56rpx;height:56rpx;border-radius:50%;'></image> -->
+              <image src="{{item.headPortrait}}" style='width:56rpx;height:56rpx;border-radius:50%;'></image>
+            </view>
+            <!-- <text style='font-size:24rpx;vertical-align:middle;'>一个诚意</text> -->
+            <text style='font-size:24rpx;vertical-align:middle;margin-left:10rpx;'>{{item.nickname}}</text>
+          </view>
+          <!-- <text style='font-size:24rpx;vertical-align:middle;color:#ACACAC'>7</text> -->
+          <text style='font-size:24rpx;vertical-align:middle;color:#ACACAC'>{{item.count}}</text>
+        </view>
+      </navigator>
+    </view>
+    <view class="img_item" style='text-align:center;'>
+      <navigator url="/pages/noteDetail/noteDetail?note_id={{item.note_id}}&areaid={{adcode}}" hover-class="none" open-type="redirect" wx:for="{{col2}}" wx:key="id" style='background-color:#fff;margin-bottom:15rpx;border:1rpx solid #DFDFDF;border-radius:15rpx;'>
+        <image src="{{item.pic}}" style="width:100%;height:{{item.height}}px;border-top-left-radius:15rpx;border-top-right-radius:15rpx;"></image>
+        <!-- <text style='font-size:24rpx;font-weight:bold;display:block;margin-top:5rpx;'>MY LAB分子甜品实验室</text> -->
+        <text style='font-size:24rpx;font-weight:bold;display:block;margin-top:8rpx;text-align:left;margin-left:20rpx;'>{{item.title}}</text>
+        <!-- <text style='font-size:24rpx;display:block;padding-left:20rpx;padding-right:20rpx;margin-top:5rpx;text-align:left;color:#7C7C7C'>图一忘了是什么了。。。是店员推荐的融化的不慢了</text> -->
+        <text class='content'>{{item.content}}</text>
+        <view style='display: flex;flex-flow: row;justify-content:space-between;align-items:center;padding-left:20rpx;padding-right:20rpx;margin-top:10rpx;margin-bottom:10rpx;'>
+          <view style='vertical-align:middle;'>
+            <view style='width:56rpx;height:56rpx;display:inline-block;border-radius:50%;border:1rpx solid #C5156A;padding:2rpx;vertical-align:middle;'>
+              <!-- <image src="/imagesDemo/1.png" style='width:56rpx;height:56rpx;border-radius:50%;'></image> -->
+              <image src="{{item.headPortrait}}" style='width:56rpx;height:56rpx;border-radius:50%;'></image>
+            </view>
+            <!-- <text style='font-size:24rpx;vertical-align:middle;'>一个诚意</text> -->
+            <text style='font-size:24rpx;vertical-align:middle;margin-left:10rpx;'>{{item.nickname}}</text>
+          </view>
+          <!-- <text style='font-size:24rpx;vertical-align:middle;color:#ACACAC'>7</text> -->
+          <text style='font-size:24rpx;vertical-align:middle;color:#ACACAC'>{{item.count}}</text>
+
+        </view>
+      </navigator>
+    </view>
+  </view>
+</scroll-view>
+<!-- <view class='loadingWrap' wx:if="loadingShow">
+  <view class="weui-loadmore">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+</view> -->
 <view style='border-top:1px solid #DFDBDB;width:100%;text-align:center;height:80rpx;line-height:70rpx;position:fixed;bottom:0;background-color:#fff' bindtap="shoucang">
 <image src='{{shoucangImg}}' style='width:44rpx;height:42rpx;vertical-align:middle;'></image>
 <text style='font-size:34rpx;color:#CACACA;vertical-align:middle;margin-left:5rpx;'>收藏</text>

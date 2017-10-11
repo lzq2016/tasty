@@ -1,7 +1,8 @@
 // pages/noteDetail/noteDetail.js
 
 const app = getApp()
-
+let col1H = 0;
+let col2H = 0;
 Page({
 
   /**
@@ -26,7 +27,16 @@ Page({
     titleImgWidth:200,
     titleImgHeight:200,
     autoplay:false,
-    shoucangImg:"/images/shoucang.png"
+    shoucangImg:"/images/shoucang.png",
+    scrollH: 0,
+    imgWidth: 0,
+    loadingCount: 0,
+    images: [],
+    preImage: [],
+    col1: [],
+    col2: [],
+    loadingShow: false,
+    adcode:null
   },
 
   /**
@@ -36,7 +46,8 @@ Page({
     console.log(options, "options")
     var self = this;
     self.setData({
-      note_id: options.note_id
+      note_id: options.note_id,
+      adcode: app.globalData.adcode
     })
     wx.getSystemInfo({
       success: (res) => {
@@ -73,6 +84,37 @@ Page({
           img_url: res.data.result.noteMsg.img_url.split(","),
           address: res.data.result.noteMsg.address
         })
+        self.setData({ pageNum: self.data.pageNum + 1 });
+        var images = [];
+        res.data.result.noteList.forEach(function (item) {
+          images.push({
+            pic: item.img_s,
+            title: item.title,
+            content: item.content,
+            headPortrait: item.headPortrait,
+            nickname: item.nickname,
+            count: item.praised_count,
+            note_id: item.note_id,
+            height: 0
+          });
+        });
+        self.setData({ preImage: images });
+        console.log(self.data.preImage, "preimage");
+        wx.getSystemInfo({
+          success: (res) => {
+            let ww = res.windowWidth;
+            let wh = res.windowHeight;
+            let imgWidth = ww * 0.48
+            let scrollH = wh;
+
+            self.setData({
+              scrollH: scrollH,
+              imgWidth: imgWidth
+            });
+
+            self.loadImages();
+          }
+        })
       }
     })
   },
@@ -105,6 +147,91 @@ Page({
 
       }
     })
+  },
+  onImageLoad: function (e) {
+    let imageId = e.currentTarget.id;
+    let oImgW = e.detail.width;         //图片原始宽度
+    let oImgH = e.detail.height;        //图片原始高度
+    let imgWidth = this.data.imgWidth;  //图片设置的宽度
+    let scale = imgWidth / oImgW;        //比例计算
+    let imgHeight = oImgH * scale;      //自适应高度
+
+    let images = this.data.images;
+    let imageObj = null;
+
+    for (let i = 0; i < images.length; i++) {
+      let img = images[i];
+      if (img.id === imageId) {
+        imageObj = img;
+        break;
+      }
+    }
+
+    imageObj.height = imgHeight;
+
+    let loadingCount = this.data.loadingCount - 1;
+    let col1 = this.data.col1;
+    let col2 = this.data.col2;
+
+    if (col1H <= col2H) {
+      col1H += imgHeight;
+      col1.push(imageObj);
+    } else {
+      col2H += imgHeight;
+      col2.push(imageObj);
+    }
+
+    let data = {
+      loadingCount: loadingCount,
+      col1: col1,
+      col2: col2
+    };
+
+    if (!loadingCount) {
+      data.images = [];
+    }
+
+    this.setData(data);
+  },
+  loadImages: function () {
+    console.log("loading images")
+    var self = this;
+    this.setData({
+      loadingShow: true
+    });
+    let images = [
+      { pic: "/imagesDemo/3.png", height: 0 },
+      { pic: "/imagesDemo/2.png", height: 0 },
+      { pic: "/imagesDemo/3.png", height: 0 },
+      { pic: "/imagesDemo/4.png", height: 0 },
+      { pic: "/imagesDemo/5.png", height: 0 },
+      { pic: "/imagesDemo/6.png", height: 0 },
+      { pic: "http://lzqrebate.oss-cn-beijing.aliyuncs.com/7.png", height: 0 },
+      { pic: "http://lzqrebate.oss-cn-beijing.aliyuncs.com/8.png", height: 0 },
+      { pic: "http://lzqrebate.oss-cn-beijing.aliyuncs.com/9.png", height: 0 },
+      { pic: "http://lzqrebate.oss-cn-beijing.aliyuncs.com/10.png", height: 0 },
+      { pic: "http://lzqrebate.oss-cn-beijing.aliyuncs.com/11.png", height: 0 },
+      { pic: "http://lzqrebate.oss-cn-beijing.aliyuncs.com/12.png", height: 0 },
+      { pic: "http://lzqrebate.oss-cn-beijing.aliyuncs.com/13.png", height: 0 },
+      { pic: "http://lzqrebate.oss-cn-beijing.aliyuncs.com/14.png", height: 0 }
+    ];
+
+    let baseId = "img-" + (+new Date());
+
+    // for (let i = 0; i < images.length; i++) {
+    //   images[i].id = baseId + "-" + i;
+    // }
+    for (let i = 0; i < this.data.preImage.length; i++) {
+      this.data.preImage[i].id = baseId + "-" + i;
+    }
+    this.setData({
+      loadingShow: false
+    });
+    console.log(self.data.preImage, "preimgs")
+    this.setData({
+      loadingCount: self.data.preImage.length,
+      images: self.data.preImage
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

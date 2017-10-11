@@ -184,6 +184,8 @@ App({
         id: null,
         openId:null,
         unionid:null,
-        cityCode:null
+        cityCode:null,
+        searchResult:null,
+        adcode:null
     }
 })

@@ -7,10 +7,11 @@ Page({
     inputVal: "",
     pageNum: 0,
     pageCount: 20,
-    areaid:null
+    areaid: null,
+    list: []
   },
   onLoad: function (options) {
-    this.setData({ areaid: options.areaid});
+    this.setData({ areaid: options.areaid });
   },
   showInput: function () {
     this.setData({
@@ -41,11 +42,28 @@ Page({
         pageNum: self.data.pageNum,
         pageCount: self.data.pageCount,
         areaid: self.data.areaid,
-        isFuzz:1
+        isFuzz: 1,
+        keyword: self.data.inputVal
       },
       success: function (res) {
-        console.log(res,"搜索接口")
+        console.log(res, "搜索接口")
+        if (res.data.result) {
+          self.setData({
+            list: res.data.result
+          });
+        }
       }
     })
+  },
+  getSearchResult: function (e) {
+    console.log(e.currentTarget.dataset.id)
+    var self = this;
+    // app.globalData.searchResult = 1;
+    self.data.list.forEach(function (item) {
+      if (item.note_id == e.currentTarget.dataset.id)
+      { 
+        app.globalData.searchResult = item;
+      }
+    });
   }
 });

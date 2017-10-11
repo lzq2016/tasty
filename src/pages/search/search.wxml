@@ -16,8 +16,8 @@
             </view>
             <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput" style='color:#F96879;'>取消</view>
         </view>
-        <view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0}}">
-            <navigator url="" class="weui-cell" hover-class="weui-cell_active">
+        <view class="searchbar-result" wx:if="{{inputVal.length > 0}}">
+            <!-- <navigator url="" class="weui-cell" hover-class="weui-cell_active">
                 <view class="weui-cell__bd">
                     <view>实时搜索文本</view>
                 </view>
@@ -31,10 +31,10 @@
                 <view class="weui-cell__bd">
                     <view>实时搜索文本</view>
                 </view>
-            </navigator>
-            <navigator url="" class="weui-cell" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">
-                    <view>实时搜索文本</view>
+            </navigator> -->
+            <navigator url="/pages/searchResult/searchResult" wx:for="{{list}}" data-id="{{item.note_id}}" bindtap="getSearchResult">
+                <view style='height:80rpx;line-height:80rpx;border-bottom:1rpx solid #eee;padding-left:20rpx;'>
+                    <text style='font-size:32rpx;'>{{item.title}}</text>
                 </view>
             </navigator>
         </view>

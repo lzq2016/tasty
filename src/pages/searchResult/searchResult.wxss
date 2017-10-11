@@ -1,0 +1,22 @@
+/* pages/searchResult/searchResult.wxss */
+.img_item {
+  width: 46%;
+  display: inline-block;
+  vertical-align: top;
+}
+.content {
+  display: -webkit-box;
+  color: #000;
+  line-height: 40rpx;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 24rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  margin-top: 8rpx;
+  text-align: left;
+  color: #7c7c7c;
+}

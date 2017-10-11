@@ -39,6 +39,7 @@ Page({
       selectCity: self.data.multiArray[1][e.detail.value[1]].name,
       adcode: self.data.multiArray[1][e.detail.value[1]].cityid
     })
+    app.globalData.adcode = self.data.multiArray[1][e.detail.value[1]].cityid;
     self.continueLoading(self, 1);
   },
   bindMultiPickerColumnChange: function (e) {
@@ -81,6 +82,7 @@ Page({
                   adcode: res.data.result.ad_info.adcode,
                   selectCity: res.data.result.ad_info.city
                 });
+                app.globalData.adcode = res.data.result.ad_info.adcode;                
                 console.log(self.data.selectCity, "选择的城市");
                 // self.globalData.token = res.data.result.ad_info.adcode; 
                 wx.request({
@@ -385,6 +387,7 @@ Page({
     this.setData({
       loadingShow: false
     });
+    console.log(self.data.preImage,"preimgs")
     this.setData({
       loadingCount: self.data.preImage.length,
       images: self.data.preImage
@@ -424,7 +427,8 @@ Page({
             headPortrait: item.headPortrait,
             nickname: item.nickname,
             count: item.praised_count,
-            height: 0
+            height: 0,
+            note_id: item.note_id
           });
         });
         self.setData({ preImage: images });
