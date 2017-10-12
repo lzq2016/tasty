@@ -152,7 +152,6 @@ Page({
     })
   },
   bannerLoad: function (e) {
-    console.log(e,"e")
     let oImgW = e.detail.width;         //图片原始宽度
     let oImgH = e.detail.height;        //图片原始高度
     let imgWidth = this.data.titleImgWidth;  //图片设置的宽度
@@ -171,10 +170,8 @@ Page({
       bannerImgs:imgs,
       bannerHeights: height
       });
-    console.log(this.data.bannerImgs,"this.data.bannerImgs")
   },
   bindchange: function (e) {
-    console.log(e,"bindchange");
     this.setData({ currentBanner: e.detail.current })
   },
   onImageLoad: function (e) {
