@@ -1,13 +1,16 @@
 <!--pages/noteDetail/noteDetail.wxml-->
 <!-- <image style="width: 100%;" mode="widthFix" src="{{img_s}}"></image> -->
 <swiper indicator-dots="true"
-  autoplay="{{autoplay}}" interval="3000" duration="500" style='width:{{titleImgWidth}};height:{{titleImgHeight}}'>
-  <block wx:for="{{img_url}}">
+  autoplay="{{autoplay}}" interval="3000" duration="500" bindchange="bindchange" style="height:{{bannerHeights[currentBanner]}}">
+  <block wx:for="{{bannerImgs}}">
     <swiper-item style="width:{{titleImgWidth}};height:{{titleImgHeight}}">
-      <image src="{{item}}" class="slide-image" style="width:{{titleImgWidth}};height:{{titleImgHeight}}" mode='aspectFill'/>
+      <image src="{{item.src}}" class="slide-image" style="width:{{item.width}};height:{{item.height}}" mode='widthFix'/>
     </swiper-item>
   </block>
 </swiper>
+<view style="display:none">
+  <image wx:for="{{img_url}}" src="{{item}}" data-src="{{item}}" bindload="bannerLoad"></image>
+</view>
 <view style='display: flex;flex-flow: row;justify-content:space-between;align-items:center;padding:20rpx 20rpx;'>
   <view>
     <!-- <image style='width:66rpx;height:66rpx;border-radius:50%;vertical-align:middle' src='/imagesDemo/1.png'></image> -->

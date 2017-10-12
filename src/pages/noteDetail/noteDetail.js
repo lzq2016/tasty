@@ -36,7 +36,10 @@ Page({
     col1: [],
     col2: [],
     loadingShow: false,
-    adcode:null
+    adcode:null,
+    bannerImgs:[],
+    bannerHeights:[],
+    currentBanner:0
   },
 
   /**
@@ -57,7 +60,7 @@ Page({
           imgWidth: (res.windowWidth-10)/3 + "px",
           imgHeight: res.windowHeight*0.25 + "px",
           titleImgHeight: res.windowHeight * 0.4 + "px",
-          titleImgWidth: res.windowWidth + "px"
+          titleImgWidth: res.windowWidth
         });
       }
     })
@@ -147,6 +150,32 @@ Page({
 
       }
     })
+  },
+  bannerLoad: function (e) {
+    console.log(e,"e")
+    let oImgW = e.detail.width;         //图片原始宽度
+    let oImgH = e.detail.height;        //图片原始高度
+    let imgWidth = this.data.titleImgWidth;  //图片设置的宽度
+    let scale = imgWidth / oImgW;        //比例计算
+    let imgHeight = oImgH * scale + "px";      //自适应高度
+    let img = {
+      src: e.target.dataset.src,
+      width:imgWidth+"px",
+      height: imgHeight
+    };
+    let imgs = this.data.bannerImgs;
+    let height = this.data.bannerHeights;
+    imgs.push(img);
+    height.push(imgHeight);
+    this.setData({ 
+      bannerImgs:imgs,
+      bannerHeights: height
+      });
+    console.log(this.data.bannerImgs,"this.data.bannerImgs")
+  },
+  bindchange: function (e) {
+    console.log(e,"bindchange");
+    this.setData({ currentBanner: e.detail.current })
   },
   onImageLoad: function (e) {
     let imageId = e.currentTarget.id;
