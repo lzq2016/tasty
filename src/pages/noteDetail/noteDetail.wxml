@@ -1,10 +1,10 @@
 <!--pages/noteDetail/noteDetail.wxml-->
 <!-- <image style="width: 100%;" mode="widthFix" src="{{img_s}}"></image> -->
 <swiper indicator-dots="true"
-  autoplay="{{autoplay}}" interval="3000" duration="500" bindchange="bindchange" style="height:{{bannerHeights[currentBanner]}}">
+  autoplay="{{autoplay}}" interval="3000" duration="500" bindchange="bindchange" style="height:{{bannerHeights[currentBanner]}}px">
   <block wx:for="{{bannerImgs}}">
     <swiper-item style="width:{{titleImgWidth}};height:{{titleImgHeight}}">
-      <image src="{{item.src}}" class="slide-image" style="width:{{item.width}};height:{{item.height}}" mode='widthFix'/>
+      <image src="{{item.src}}" class="slide-image" style="width:{{item.width}};height:{{item.height}}px;max-height:{{titleImgHeight}}px;" mode='aspectFill'/>
     </swiper-item>
   </block>
 </swiper>

@@ -59,7 +59,7 @@ Page({
         self.setData({
           imgWidth: (res.windowWidth-10)/3 + "px",
           imgHeight: res.windowHeight*0.25 + "px",
-          titleImgHeight: res.windowHeight * 0.4 + "px",
+          titleImgHeight: res.windowHeight * 0.75,
           titleImgWidth: res.windowWidth
         });
       }
@@ -156,7 +156,11 @@ Page({
     let oImgH = e.detail.height;        //图片原始高度
     let imgWidth = this.data.titleImgWidth;  //图片设置的宽度
     let scale = imgWidth / oImgW;        //比例计算
-    let imgHeight = oImgH * scale + "px";      //自适应高度
+    let imgHeight = oImgH * scale;      //自适应高度
+    if (imgHeight > this.data.titleImgHeight)
+    {
+      imgHeight = this.data.titleImgHeight;
+    }
     let img = {
       src: e.target.dataset.src,
       width:imgWidth+"px",
