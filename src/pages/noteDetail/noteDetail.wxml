@@ -1,13 +1,16 @@
 <!--pages/noteDetail/noteDetail.wxml-->
 <!-- <image style="width: 100%;" mode="widthFix" src="{{img_s}}"></image> -->
-<swiper indicator-dots="true"
-  autoplay="{{autoplay}}" interval="3000" duration="500" bindchange="bindchange" style="height:{{bannerHeights[currentBanner]}}px">
-  <block wx:for="{{bannerImgs}}">
-    <swiper-item style="width:{{titleImgWidth}};height:{{titleImgHeight}}">
-      <image src="{{item.src}}" class="slide-image" style="width:{{item.width}};height:{{item.height}}px;max-height:{{titleImgHeight}}px;" mode='aspectFill'/>
-    </swiper-item>
-  </block>
-</swiper>
+<view style='position:relative;'>
+  <swiper  autoplay="{{autoplay}}" interval="3000" duration="500" bindchange="bindchange" style="height:{{bannerHeights[currentBanner]}}px;">
+    <block wx:for="{{bannerImgs}}">
+      <swiper-item style="width:{{titleImgWidth}};height:{{titleImgHeight}}">
+        <image src="{{item.src}}" class="slide-image" style="width:{{item.width}};height:{{item.height}}px;max-height:{{titleImgHeight}}px;" mode='aspectFill' />
+      </swiper-item>
+    </block>
+  </swiper>
+  <text style='position:absolute;bottom:20px;right:20px;font-size:13px;color:#fff;'>{{page}}/{{totalPage}}</text>
+</view>
+
 <view style="display:none">
   <image wx:for="{{img_url}}" src="{{item}}" data-src="{{item}}" bindload="bannerLoad"></image>
 </view>
@@ -93,6 +96,6 @@
   </view>
 </view> -->
 <view style='border-top:1px solid #DFDBDB;width:100%;text-align:center;height:80rpx;line-height:70rpx;position:fixed;bottom:0;background-color:#fff' bindtap="shoucang">
-<image src='{{shoucangImg}}' style='width:44rpx;height:42rpx;vertical-align:middle;'></image>
-<text style='font-size:34rpx;color:#CACACA;vertical-align:middle;margin-left:5rpx;'>收藏</text>
+  <image src='{{shoucangImg}}' style='width:44rpx;height:42rpx;vertical-align:middle;'></image>
+  <text style='font-size:34rpx;color:#CACACA;vertical-align:middle;margin-left:5rpx;'>收藏</text>
 </view>

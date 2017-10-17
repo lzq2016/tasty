@@ -39,7 +39,9 @@ Page({
     adcode:null,
     bannerImgs:[],
     bannerHeights:[],
-    currentBanner:0
+    currentBanner:0,
+    page:1,
+    totalPage:10
   },
 
   /**
@@ -85,7 +87,8 @@ Page({
           collect_count: res.data.result.noteMsg.collect_count,
           praise_count: res.data.result.noteMsg.praise_count,
           img_url: res.data.result.noteMsg.img_url.split(","),
-          address: res.data.result.noteMsg.address
+          address: res.data.result.noteMsg.address,
+          totalPage: res.data.result.noteMsg.img_url.split(",").length
         })
         self.setData({ pageNum: self.data.pageNum + 1 });
         var images = [];
@@ -176,7 +179,10 @@ Page({
       });
   },
   bindchange: function (e) {
-    this.setData({ currentBanner: e.detail.current })
+    this.setData({ 
+      currentBanner: e.detail.current,
+      page: e.detail.current + 1
+    });
   },
   onImageLoad: function (e) {
     let imageId = e.currentTarget.id;

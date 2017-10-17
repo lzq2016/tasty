@@ -1,5 +1,5 @@
 <!--pages/me/me.wxml-->
-<view style="height:400rpx;background-image:url('http://lzqrebate.oss-cn-beijing.aliyuncs.com/meBackground.png');background-size:cover;">
+<view style="height:400rpx;background-color:#fff;">
   <view style="text-align:center;padding-top:30rpx;">
     <image class="userinfo-avatar" src="{{user.headPortrait}}" background-size="cover"></image>
     <!-- <image class="userinfo-avatar" src="/imagesDemo/1.png" background-size="cover"></image> -->
