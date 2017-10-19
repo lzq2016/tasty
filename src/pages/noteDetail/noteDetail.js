@@ -22,6 +22,7 @@ Page({
     praise_count: null,
     img_url: [],
     address: null,
+    latitude:null,
     imgWidth:200,
     imgHeight:200,
     titleImgWidth:200,
@@ -41,7 +42,8 @@ Page({
     bannerHeights:[],
     currentBanner:0,
     page:1,
-    totalPage:10
+    totalPage:10,
+    shoucang:"收藏"
   },
 
   /**
@@ -88,6 +90,8 @@ Page({
           praise_count: res.data.result.noteMsg.praise_count,
           img_url: res.data.result.noteMsg.img_url.split(","),
           address: res.data.result.noteMsg.address,
+          latitude: res.data.result.noteMsg.latitude,
+          longitude: res.data.result.noteMsg.longitude,
           totalPage: res.data.result.noteMsg.img_url.split(",").length
         })
         self.setData({ pageNum: self.data.pageNum + 1 });
@@ -124,6 +128,15 @@ Page({
       }
     })
   },
+  openlocation:function(){
+    var self = this;
+    wx.openLocation({
+      latitude: self.data.latitude,
+      longitude: self.data.longitude,
+      name: self.data.address,
+      scale: 28
+    })
+  },
   shoucang: function (e) {
     var self = this;
     wx.request({
@@ -136,7 +149,10 @@ Page({
       success: function (res) {
         console.log(res, "shoucang");
         if (res.data.resultstate == 1) {
-          self.setData({ shoucangImg:"/images/shoucangSelect.png"});
+          self.setData({ 
+            shoucangImg:"/images/shoucangSelect.png",
+            shoucang:"已收藏"
+            });
           wx.showToast({
             title: '收藏成功',
             icon: 'success',
