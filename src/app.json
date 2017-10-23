@@ -28,12 +28,6 @@
         "selectedIconPath":"images/homeSelect.png"
       },
       {
-        "pagePath": "pages/find/find",
-        "text": "发现",
-        "iconPath": "images/find.png",
-        "selectedIconPath": "images/findSelect.png"
-      },
-      {
         "pagePath": "pages/me/me",
         "text": "我",
         "iconPath": "images/me.png",

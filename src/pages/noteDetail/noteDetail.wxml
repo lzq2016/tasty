@@ -1,7 +1,7 @@
 <!--pages/noteDetail/noteDetail.wxml-->
 <!-- <image style="width: 100%;" mode="widthFix" src="{{img_s}}"></image> -->
 <view style='position:relative;'>
-  <swiper  autoplay="{{autoplay}}" interval="3000" duration="500" bindchange="bindchange" style="height:{{bannerHeights[currentBanner]}}px;">
+  <swiper autoplay="{{autoplay}}" interval="3000" duration="500" bindchange="bindchange" style="height:{{bannerHeights[currentBanner]}}px;">
     <block wx:for="{{bannerImgs}}">
       <swiper-item style="width:{{titleImgWidth}};height:{{titleImgHeight}}">
         <image src="{{item.src}}" class="slide-image" style="width:{{item.width}};height:{{item.height}}px;max-height:{{titleImgHeight}}px;" mode='aspectFill' />
@@ -28,13 +28,16 @@
   </text> -->
   <text style='font-size:24rpx;color:#757575;line-height:29rpx;'>{{content}}</text>
 </view>
-<view style='font-size:24rpx;color:#C8C8C8;display: flex;flex-flow: row;justify-content:space-between;align-items:center;padding:0 20rpx;'>
+<view style='font-size:24rpx;color:#C8C8C8;display: flex;flex-flow: row;justify-content:space-between;align-items:center;padding:50rpx 20rpx;padding-top:30rpx;'>
   <text> 阅读 {{look_count}}</text>
   <text> 收藏 {{collect_count}} 赞 {{praise_count}}</text>
 </view>
-<view style='padding-left:20rpx;padding-top:20rpx;'>
-  <image style='width:23rpx;height:34rpx;vertical-align:middle' src='/images/location.png'></image>
-  <text style='font-size:24rpx;color:#C8C8C8;vertical-align:middle;margin-left:15rpx;' bindtap='openlocation'>{{address}}</text>
+<view style='padding-left:20rpx;padding-right:20rpx;padding-bottom:50rpx;display: flex;flex-flow: row;justify-content:space-between;align-items:center;'>
+  <view>
+    <image style='width:23rpx;height:34rpx;vertical-align:middle' src='/images/location.png'></image>
+    <text style='font-size:24rpx;color:#C8C8C8;vertical-align:middle;margin-left:15rpx;' bindtap='openlocation'>{{address}}</text>
+  </view>
+  <image src='../../images/arrow.png' style='width:11rpx;height:20rpx;' bindtap='openlocation'></image>
 </view>
 <!-- <scroll-view scroll-y="true" style="width: 100%;margin-top:20rpx;margin-bottom:102rpx;">
     <image style='width:{{imgWidth}};height:{{imgHeight}};' class="{{(index+1)%3==0?'img':'img-mr'}}" mode="aspectFill" src='{{item}}' wx:for="{{img_url}}"></image>
@@ -42,7 +45,7 @@
 <view style="display:none">
   <image wx:for="{{images}}" wx:key="id" id="{{item.id}}" src="{{item.pic}}" bindload="onImageLoad"></image>
 </view>
-<scroll-view scroll-y="true" style="height:{{scrollH}}px" bindscrolltolower="loading" style='background-color:#f4f5f7;padding-top:10rpx;margin-top:20rpx;padding-bottom:110rpx;'>
+<scroll-view scroll-y="true" style="height:{{scrollH}}px" bindscrolltolower="loading" style='background-color:#f4f5f7;padding-top:10rpx;padding-bottom:110rpx;'>
   <view style="display: flex;flex-flow: row;justify-content:center">
     <view class="img_item" style='margin-right:15rpx;text-align:center;'>
       <navigator url="/pages/noteDetail/noteDetail?note_id={{item.note_id}}&areaid={{adcode}}" hover-class="none" open-type="redirect" wx:for="{{col1}}" wx:key="id" style='background-color:#fff;margin-bottom:15rpx;border:1rpx solid #DFDFDF;border-radius:15rpx;'>
