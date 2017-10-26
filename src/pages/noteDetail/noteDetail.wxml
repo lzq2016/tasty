@@ -35,9 +35,9 @@
 <view style='padding-left:20rpx;padding-right:20rpx;padding-bottom:50rpx;display: flex;flex-flow: row;justify-content:space-between;align-items:center;'>
   <view>
     <image style='width:23rpx;height:34rpx;vertical-align:middle' src='/images/location.png'></image>
-    <text style='font-size:24rpx;color:#C8C8C8;vertical-align:middle;margin-left:15rpx;' bindtap='openlocation'>{{address}}</text>
+    <text style='font-size:24rpx;color:#C8C8C8;vertical-align:middle;margin-left:15rpx;'>{{address}}</text>
   </view>
-  <image src='../../images/arrow.png' style='width:11rpx;height:20rpx;' bindtap='openlocation'></image>
+  <image src='../../images/arrow.png' style='width:11rpx;height:20rpx;'></image>
 </view>
 <!-- <scroll-view scroll-y="true" style="width: 100%;margin-top:20rpx;margin-bottom:102rpx;">
     <image style='width:{{imgWidth}};height:{{imgHeight}};' class="{{(index+1)%3==0?'img':'img-mr'}}" mode="aspectFill" src='{{item}}' wx:for="{{img_url}}"></image>
