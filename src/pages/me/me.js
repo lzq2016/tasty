@@ -95,20 +95,23 @@ Page({
      */
     onPullDownRefresh: function () {
         var self = this;
-        wx.request({
-            url: 'https://www.sharetasty.com/client/UserService/searchUserById',
-            data: {
-                token: app.globalData.token,
-                user_id: app.globalData.id,
-                pageNum: 0,
-                pageCount: 20
-            },
-            success: function (res) {
-                console.log(res.data.result, "me")
-                self.setData({ user: res.data.result.user })
-                self.setData({ collect_notes: res.data.result.collect_notes })
-            }
-        })
+        // wx.request({
+        //     url: 'https://www.sharetasty.com/client/UserService/searchUserById',
+        //     data: {
+        //         token: app.globalData.token,
+        //         user_id: app.globalData.id,
+        //         pageNum: 0,
+        //         pageCount: 20
+        //     },
+        //     success: function (res) {
+        //         console.log(res.data.result, "me")
+        //         self.setData({ user: res.data.result.user })
+        //         self.setData({ collect_notes: res.data.result.collect_notes });
+        //         wx.stopPullDownRefresh();
+        //     }
+        // })
+        wx.stopPullDownRefresh();
+        
     },
 
     /**

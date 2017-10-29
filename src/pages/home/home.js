@@ -56,6 +56,65 @@ Page({
     }
     this.setData(data);
   },
+  onPullDownRefresh: function () {
+    var self = this;
+    self.setData({
+      pageNum: 0,
+      col1: [],
+      col2: []
+    });
+    wx.request({
+      url: 'https://www.sharetasty.com/client/NewCommunityService/searchNotesIndex3',
+      data: {
+        type: 1,
+        token: app.globalData.token,
+        pageNum: self.data.pageNum,
+        pageCount: self.data.pageCount,
+        areaid: self.data.adcode,
+        latitude: self.data.latitude,
+        longitude: self.data.longitude
+      },
+      success: function (res) {
+        console.log(res.data.result, "1345");
+        self.setData({ pageNum: self.data.pageNum + 1 });
+        var images = [];
+        res.data.result.notes.forEach(function (item) {
+          images.push({
+            pic: item.img_s,
+            title: item.title,
+            content: item.content,
+            headPortrait: item.headPortrait,
+            nickname: item.nickname,
+            count: item.praised_count,
+            note_id: item.note_id,
+            height: 0
+          });
+        });
+        self.setData({ preImage: images });
+        console.log(self.data.preImage, "preimage");
+        wx.getSystemInfo({
+          success: (res) => {
+            let ww = res.windowWidth;
+            let wh = res.windowHeight;
+            let imgWidth = ww * 0.48
+            let scrollH = wh;
+
+            self.setData({
+              scrollH: scrollH,
+              imgWidth: imgWidth
+            });
+
+            self.loadImages();
+            wx.stopPullDownRefresh();
+
+          }
+        })
+      },
+      fail: function (res) {
+        console.log(res, "接口错误")
+      }
+    })
+  },
   onLoad: function () {
     var self = this;
     this.setData({ multiArray: cityInit.citysData });
@@ -82,7 +141,7 @@ Page({
                   adcode: res.data.result.ad_info.adcode,
                   selectCity: res.data.result.ad_info.city
                 });
-                app.globalData.adcode = res.data.result.ad_info.adcode;                
+                app.globalData.adcode = res.data.result.ad_info.adcode;
                 console.log(self.data.selectCity, "选择的城市");
                 // self.globalData.token = res.data.result.ad_info.adcode; 
                 wx.request({
@@ -131,17 +190,17 @@ Page({
                     })
                   },
                   fail: function (res) {
-                      console.log(res,"接口错误")
+                    console.log(res, "接口错误")
                   }
                 })
               },
               fail: function (res) {
-                  console.log(res, "获取腾讯地址失败信息");
+                console.log(res, "获取腾讯地址失败信息");
               }
             })
           },
           fail: function (res) {
-              console.log(res,"获取经纬度接口失败信息");
+            console.log(res, "获取经纬度接口失败信息");
           }
         })
       }
@@ -387,7 +446,7 @@ Page({
     this.setData({
       loadingShow: false
     });
-    console.log(self.data.preImage,"preimgs")
+    console.log(self.data.preImage, "preimgs")
     this.setData({
       loadingCount: self.data.preImage.length,
       images: self.data.preImage
@@ -409,9 +468,9 @@ Page({
         self.setData({ pageNum: self.data.pageNum + 1 });
         var images = [];
         if (types != 1) {
-          self.data.preImage.forEach(function (item) {
-            images.push(item);
-          });
+          // self.data.preImage.forEach(function (item) {
+          //   images.push(item);
+          // });
         }
         else {
           self.setData({

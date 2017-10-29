@@ -1,3 +1,4 @@
 {
-  "navigationBarTitleText": "Tasty"
+  "navigationBarTitleText": "Tasty",
+  "enablePullDownRefresh": true
 }
