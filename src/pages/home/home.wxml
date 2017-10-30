@@ -5,10 +5,10 @@
       <text style='color:#474646;font-size:24rpx;vertical-align:middle;margin-left:10rpx;'>{{selectCity}}</text>
     </view>
   </picker>
-   <navigator url="/pages/search/search?areaid={{adcode}}" hover-class="none" style='background-color:#EDEDED;width:350rpx;height:55rpx;border-radius:30rpx;text-align:center;'>
+  <navigator url="/pages/search/search?areaid={{adcode}}" hover-class="none" style='background-color:#EDEDED;width:350rpx;height:55rpx;border-radius:30rpx;text-align:center;'>
     <image src="/images/search.png" style="width:30rpx;height:30rpx;vertical-align:middle;"></image>
     <text style='color:#979797;font-size:24rpx;vertical-align:middle;margin-left:10rpx;'>搜索</text>
-  </navigator> 
+  </navigator>
 </view>
 <view style="display:none">
   <image wx:for="{{images}}" wx:key="id" id="{{item.id}}" src="{{item.pic}}" bindload="onImageLoad"></image>
@@ -22,17 +22,20 @@
         <text style='font-size:24rpx;font-weight:bold;display:block;margin-top:8rpx;text-align:left;padding-left:20rpx;'>{{item.title}}</text>
         <!-- <text style='font-size:24rpx;display:block;padding-left:20rpx;padding-right:20rpx;margin-top:5rpx;text-align:left;color:#7C7C7C'>图一忘了是什么了。。。是店员推荐的融化的不慢了</text> -->
         <text style='' class='content'>{{item.content}}</text>
-        <view style='display: flex;flex-flow: row;justify-content:space-between;align-items:center;padding-left:20rpx;padding-right:20rpx;margin-top:10rpx;margin-bottom:10rpx;'>
+        <view style='display: flex;flex-flow: row;justify-content:space-between;align-items:center;padding-left:20rpx;padding-right:20rpx;margin-top:10rpx;margin-bottom:10rpx;line-height:56rpx;'>
           <view style='vertical-align:middle;'>
             <view style='width:56rpx;height:56rpx;display:inline-block;border-radius:50%;border:1rpx solid #C5156A;padding:2rpx;vertical-align:middle;'>
               <!-- <image src="/imagesDemo/1.png" style='width:56rpx;height:56rpx;border-radius:50%;'></image> -->
               <image src="{{item.headPortrait}}" style='width:56rpx;height:56rpx;border-radius:50%;'></image>
             </view>
             <!-- <text style='font-size:24rpx;vertical-align:middle;'>一个诚意</text> -->
-            <text style='font-size:24rpx;vertical-align:middle;margin-left:10rpx;'>{{item.nickname}}</text>
+            <text style='font-size:24rpx;vertical-align:middle;margin-left:10rpx;width:65px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;display:inline-block;text-align:left;'>{{item.nickname}}</text>
           </view>
           <!-- <text style='font-size:24rpx;vertical-align:middle;color:#ACACAC'>7</text> -->
-          <text style='font-size:24rpx;vertical-align:middle;color:#ACACAC'>{{item.count}}</text>
+          <view style='vertical-align:middle;'>
+            <image src='/images/zan.png' style='width:23rpx;height:23rpx;margin-right:5px'></image>
+            <text style='font-size:24rpx;color:#ACACAC'>{{item.count}}</text>
+          </view>
         </view>
       </navigator>
     </view>
@@ -43,18 +46,20 @@
         <text style='font-size:24rpx;font-weight:bold;display:block;margin-top:8rpx;text-align:left;margin-left:20rpx;'>{{item.title}}</text>
         <!-- <text style='font-size:24rpx;display:block;padding-left:20rpx;padding-right:20rpx;margin-top:5rpx;text-align:left;color:#7C7C7C'>图一忘了是什么了。。。是店员推荐的融化的不慢了</text> -->
         <text class='content'>{{item.content}}</text>
-        <view style='display: flex;flex-flow: row;justify-content:space-between;align-items:center;padding-left:20rpx;padding-right:20rpx;margin-top:10rpx;margin-bottom:10rpx;'>
+        <view style='display: flex;flex-flow: row;justify-content:space-between;align-items:center;padding-left:20rpx;padding-right:20rpx;margin-top:10rpx;margin-bottom:10rpx;line-height:56rpx;'>
           <view style='vertical-align:middle;'>
             <view style='width:56rpx;height:56rpx;display:inline-block;border-radius:50%;border:1rpx solid #C5156A;padding:2rpx;vertical-align:middle;'>
               <!-- <image src="/imagesDemo/1.png" style='width:56rpx;height:56rpx;border-radius:50%;'></image> -->
               <image src="{{item.headPortrait}}" style='width:56rpx;height:56rpx;border-radius:50%;'></image>
             </view>
             <!-- <text style='font-size:24rpx;vertical-align:middle;'>一个诚意</text> -->
-            <text style='font-size:24rpx;vertical-align:middle;margin-left:10rpx;'>{{item.nickname}}</text>
+            <text style='font-size:24rpx;vertical-align:middle;margin-left:10rpx;width:65px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;display:inline-block;text-align:left;'>{{item.nickname}}</text>
           </view>
           <!-- <text style='font-size:24rpx;vertical-align:middle;color:#ACACAC'>7</text> -->
-          <text style='font-size:24rpx;vertical-align:middle;color:#ACACAC'>{{item.count}}</text>
-
+          <view style='vertical-align:middle;'>
+            <image src='/images/zan.png' style='width:23rpx;height:23rpx;margin-right:5px'></image>
+            <text style='font-size:24rpx;color:#ACACAC'>{{item.count}}</text>
+          </view>
         </view>
       </navigator>
     </view>
