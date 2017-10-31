@@ -12,7 +12,7 @@
 </view>
 
 <view style="display:none">
-  <image wx:for="{{img_url}}" src="{{item}}" data-src="{{item}}" bindload="bannerLoad"></image>
+  <image wx:for="{{img_url}}" src="{{item}}" data-imgkey="{{index}}" data-src="{{item}}" bindload="bannerLoad"></image>
 </view>
 <view style='display: flex;flex-flow: row;justify-content:space-between;align-items:center;padding:20rpx 20rpx;'>
   <view>

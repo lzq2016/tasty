@@ -208,8 +208,10 @@ Page({
         console.log(e.target.dataset.imgkey);
         let imgs = this.data.bannerImgs;
         let height = this.data.bannerHeights;
-        imgs.push(img);
-        height.push(imgHeight);
+        // imgs.push(img);
+        imgs[e.target.dataset.imgkey] = img;
+        // height.push(imgHeight);
+        height[e.target.dataset.imgkey] = imgHeight;
         this.setData({
             bannerImgs: imgs,
             bannerHeights: height
