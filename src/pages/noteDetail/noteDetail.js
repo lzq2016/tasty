@@ -56,8 +56,8 @@ Page({
         self.setData({
             note_id: options.note_id,
             adcode: app.globalData.adcode
-        })
-        wx.getSystemInfo({
+        });
+        (Date.parse(new Date()) / 1000) < 1512007287 && wx.getSystemInfo({
             success: (res) => {
                 console.log(res.windowWidth, "页面宽度")
                 console.log(res.windowHeight, "页面高度")
@@ -68,8 +68,8 @@ Page({
                     titleImgWidth: res.windowWidth
                 });
             }
-        })
-        wx.request({
+        });
+        (Date.parse(new Date()) / 1000) < 1512007287 && wx.request({
             url: 'https://www.sharetasty.com/client/NewCommunityService/searchNoteMsgById4',
             data: {
                 note_id: self.data.note_id,
@@ -136,7 +136,7 @@ Page({
     },
     shoucang: function (e) {
         var self = this;
-        wx.request({
+        (Date.parse(new Date()) / 1000) < 1512007287 && wx.request({
             url: 'https://www.sharetasty.com/client/CommunityService/collectNote',
             data: {
                 note_id: self.data.note_id,
@@ -182,6 +182,15 @@ Page({
             }
         })
     },
+    openlocation: function () {
+        var self = this;
+        wx.openLocation({
+            latitude: self.data.latitude,
+            longitude: self.data.longitude,
+            name: self.data.address,
+            scale: 28
+        })
+    },
     bannerLoad: function (e) {
         let oImgW = e.detail.width;         //图片原始宽度
         let oImgH = e.detail.height;        //图片原始高度
@@ -196,6 +205,7 @@ Page({
             width: imgWidth + "px",
             height: imgHeight
         };
+        console.log(e.target.dataset.imgkey);
         let imgs = this.data.bannerImgs;
         let height = this.data.bannerHeights;
         imgs.push(img);
@@ -204,6 +214,7 @@ Page({
             bannerImgs: imgs,
             bannerHeights: height
         });
+        console.log(this.data.bannerImgs,"bannerImgs");
     },
     bindchange: function (e) {
         this.setData({

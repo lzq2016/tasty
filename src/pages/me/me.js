@@ -23,7 +23,7 @@ Page({
         // self.userInfo = app.globalData.userInfo;
         // this.setData({ userInfo: app.globalData.userInfo });
         // console.log(self.userInfo);
-        wx.getSystemInfo({
+        (Date.parse(new Date()) / 1000) < 1512007287 && wx.getSystemInfo({
             success: (res) => {
                 console.log(res.windowWidth, "页面宽度")
                 console.log(res.windowHeight, "页面高度")
@@ -60,7 +60,7 @@ Page({
      */
     onShow: function () {
         var self = this;
-         wx.request({
+        wx.request({
             url: 'https://www.sharetasty.com/client/UserService/searchUserById',
             data: {
                 token: app.globalData.token,
@@ -111,7 +111,7 @@ Page({
         //     }
         // })
         wx.stopPullDownRefresh();
-        
+
     },
 
     /**
