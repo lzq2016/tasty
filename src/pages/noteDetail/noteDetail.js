@@ -205,7 +205,7 @@ Page({
             width: imgWidth + "px",
             height: imgHeight
         };
-        console.log(e.target.dataset.imgkey);
+        console.log(e,"e");
         let imgs = this.data.bannerImgs;
         let height = this.data.bannerHeights;
         // imgs.push(img);

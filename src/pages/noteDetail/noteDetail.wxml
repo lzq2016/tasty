@@ -4,7 +4,7 @@
   <swiper autoplay="{{autoplay}}" interval="3000" duration="500" bindchange="bindchange" style="height:{{bannerHeights[currentBanner]}}px;">
     <block wx:for="{{bannerImgs}}">
       <swiper-item style="width:{{titleImgWidth}};height:{{titleImgHeight}}">
-        <image src="{{item.src}}" class="slide-image" style="width:{{item.width}};height:{{item.height}}px;max-height:{{titleImgHeight}}px;" mode='aspectFill' />
+        <image src="{{item.src}}" class="slide-image" style="width:{{item.width}};height:{{item.height}}px;max-height:{{titleImgHeight}}px;" mode='widthFix' />
       </swiper-item>
     </block>
   </swiper>
@@ -12,7 +12,7 @@
 </view>
 
 <view style="display:none">
-  <image wx:for="{{img_url}}" src="{{item}}" data-imgkey="{{index}}" data-src="{{item}}" bindload="bannerLoad"></image>
+  <image mode='widthFix' wx:for="{{img_url}}" src="{{item}}" data-imgkey="{{index}}" data-src="{{item}}" bindload="bannerLoad"></image>
 </view>
 <view style='display: flex;flex-flow: row;justify-content:space-between;align-items:center;padding:20rpx 20rpx;'>
   <view>

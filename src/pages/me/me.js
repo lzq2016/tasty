@@ -12,7 +12,8 @@ Page({
         user: {},
         collect_notes: [],
         imgWidth: 200,
-        imgHeight: 200
+        imgHeight: 200,
+        pageNum:1
     },
 
     /**
@@ -60,6 +61,7 @@ Page({
      */
     onShow: function () {
         var self = this;
+        self.setData({ pageNum: 1 });
         wx.request({
             url: 'https://www.sharetasty.com/client/UserService/searchUserById',
             data: {
@@ -118,7 +120,30 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-
+      var self = this;
+      wx.request({
+        url: 'https://www.sharetasty.com/client/UserService/searchUserById',
+        data: {
+          token: app.globalData.token,
+          user_id: app.globalData.id,
+          pageNum: self.data.pageNum,
+          pageCount: 20
+        },
+        success: function (res) {
+          console.log(res,"res")
+          self.setData({ pageNum: self.data.pageNum+1});
+          var img = [];
+          console.log(self.data.collect_notes, "self.data.collect_notes")
+          self.data.collect_notes.forEach(function(item){
+            img.push(item);
+          });
+          console.log(img,"img");
+          res.data.result.collect_notes && res.data.result.collect_notes.forEach(function(item){
+            img.push(item);
+          });
+          self.setData({ collect_notes: img })
+        }
+      })
     },
 
     /**
